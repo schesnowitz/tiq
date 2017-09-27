@@ -1,0 +1,4 @@
+get_driver_locations:
+  cron: "* * * * *"
+  class: "DriverLocationsJob" 
+  queue: default

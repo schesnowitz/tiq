@@ -1,0 +1,30 @@
+<h1>Mobile Users</h1>
+
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr>
+      <th>Mobile User ID</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mobile_users.each do |mobile_user| %>
+      <tr>
+        <td><%= mobile_user.id %></td>
+        <td><%= mobile_user.email %></td>
+        <td><%= mobile_user.username %></td>
+        <td><%= mobile_user.password %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

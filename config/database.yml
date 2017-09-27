@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode 
+  host: <%= ENV["POSTGRES_HOST"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: iq_development
+
+test:
+  <<: *default
+  database: fr8track_test
+
+production:
+  <<: *default
+  host: <%= ENV["POSTGRES_HOST"] %>
+  database: fr8track_production

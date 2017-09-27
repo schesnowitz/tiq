@@ -1,0 +1,14 @@
+<%= simple_form_for(@load_to_mobile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :accept %>
+    <%= f.input :decline %>
+    <%= f.input :driver_user_id %>
+    <%= f.input :driver_email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

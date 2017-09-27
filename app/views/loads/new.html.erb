@@ -1,0 +1,370 @@
+<%= simple_form_for(@load, html: { class: "input-sm" }) do |f| %>
+<div class="col-sm-12 col-sm-offset-0 shadow round well">
+  <h3>New Load</h3>
+  <div class="well">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+          <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+            :id, :driver_name_and_type, {include_blank: "Select Driver"}, {id: "select-driver"} %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-ship"></i></span>
+          <%= f.collection_select :company_profile_id, @company_profile.all.order(:company_name),
+            :id, :company_name, include_blank: "Broker/Shipper" %><br />
+          <%= link_to "Add Broker", new_company_profile_path,
+            class: "btn btn-info btn-xs round" %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-arrows-h"></i></span>
+          <%= f.input :broker_shipper_load_id, label: false, placeholder: "Brk Load ID" %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>
+          <%= f.input :load_size, collection: ApplicationRecord::LoadSize,
+            label: false, include_blank: "e.g. 'FTL, LTL'" %>
+        </div>
+      </div>
+    </div>
+    <%= f.input :description, label: "Description",
+      placeholder: '24 pallets - 5 crates -18 boxes - 10 barrels - 6 steel rolls etc', 
+      class: "form-control" %>
+    <hr>
+    <div class='row'>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <div>
+            <label>Invoice Price</label>
+            <%= f.text_field :invoice_price, class: 'bsInputSize center form-control' %>
+          </div>
+          <br>
+          <div id="showToOwnerOperators">
+            <div>
+              <label>Booking Fee</label>
+              <%= f.text_field :booking_fee, class: 'bsInputSize center form-control'  %>
+            </div>
+            <br>
+            <div>
+              <label>Percentage to Comapny</label>
+              <br>
+              <%= f.collection_select :percentage_id, Percentage.all, :id, :amount, class: 'form-control' %>
+            </div>
+            <br />
+            <div>
+              <label>Company Fee:</label> 
+              <%= f.text_field :percent_coverted_to_dollars, class: 'bsInputSize center form-control', readonly: true  %>
+            </div>
+            <br />
+            <div>
+              <label>Operator Rate:</label>
+              <%= f.text_field :rate_to_owner_operator, class: 'bsInputSize center form-control'  %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>-->
+          <%= f.input :status_name, collection: ApplicationRecord::LoadStatusStatus,
+            include_blank: "Select Status", label: "Select Status" %> 
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>-->
+          <%= f.input :weight, label: 'Weight', placeholder: 'Weight', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2 col-sm-offset-0">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>-->
+          <!--<span class="input-group-addon">e.g. 33x22</span>-->
+          <%= f.input :dimentions, label: 'Dimentions', placeholder: 'Dimentions', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-cubes"></i>-->
+          </span>
+          <%= f.input :commodity, label: "Commodity", placeholder: "Commodity", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <label>Broker rep name</label>
+          <%= f.text_field :broker_rep_name, label: "Broker rep name",  placeholder: "Broker Rep Name", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <label>Broker Email</label>
+          <%= f.text_field :broker_rep_email, label: "Broker email",  placeholder: "Broker email", class: 'form-control' %>
+        </div>
+      </div> 
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <label>Broker Office Tele</label>
+          <%= f.text_field :broker_rep_number, id: 'phone', class: 'form-control', label: "Broker Office Phone" %>
+        </div>
+      </div>
+      <div class="col-sm-2 col-sm-offset-0">
+        <div class="form-group input-group">
+          <label>Broker Cell</label>
+          <%= f.text_field :broker_rep_cell, id: 'phone2', class: 'form-control', label: "Broker Cell" %>    
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <label>After hours instructions</label><br> 
+          <%= f.text_field :broker_after_hours_instructions, label: "after hours instructions",  
+          placeholder: "ask for jim at gate, call frank at...", class: 'form-control'  %>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="hidden">  
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :driver_rate_set_in_model, {include_blank: "Select Driver"} %>
+      <%= f.input :driver_cents_pm %>
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_all_truck_trailer_info, {include_blank: ""}, 
+        {id: "all_truck_trailer_info"} %>    
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_truck_make, {include_blank: ""}, {id: "truck_make"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_truck_model, {include_blank: ""}, {id: "truck_model"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_truck_color, {include_blank: ""}, {id: "truck_color"} %>  
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),  
+        :id, :show_truck_number, {include_blank: ""}, {id: "truck_number"} %>          
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_truck_plate, {include_blank: ""}, {id: "truck_plate"} %>  
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_truck_state, {include_blank: ""}, {id: "truck_state"} %>     
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_truck_mpg, {include_blank: ""}, {id: "truck_mpg"} %>  
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_trailer_make, {include_blank: ""}, {id: "trailer_make"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_trailer_type, {include_blank: ""}, {id: "trailer_type"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_trailer_length, {include_blank: ""}, {id: "trailer_length"} %>  
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_trailer_door_type, {include_blank: ""}, {id: "trailer_door_type"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_trailer_number, {include_blank: ""}, {id: "trailer_number"} %> 
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name),
+        :id, :show_trailer_plate, {include_blank: ""}, {id: "trailer_plate"} %>   
+      <%= f.collection_select :driver_user_id, @driver.all.order(:first_name), 
+        :id, :show_trailer_state, {include_blank: ""}, {id: "trailer_state"} %>    
+      <%= f.input :truck_year %>
+      <%= f.input :truck_number %>
+      <%= f.input :truck_make %>
+      <%= f.input :truck_model %>
+      <%= f.input :truck_color %>
+      <%= f.input :truck_plate %>
+      <%= f.input :truck_state %>
+      <%= f.input :trailer_number %>
+      <%= f.input :trailer_year %>
+      <%= f.input :trailer_make %> 
+      <%= f.input :trailer_type %>
+      <%= f.input :trailer_length %>
+      <%= f.input :trailer_plate %>
+      <%= f.input :trailer_state %>
+      <%= f.input :trailer_door_type %>
+      <%= f.input :equipment_type,
+        label: "Equipment Type"   %> 
+    </div>
+    <div id="hideThisStuff">
+      <div id="noTruckText" class="hidden">   
+        <strong class="label label-danger"> This Driver has no truck!</strong> 
+        <%= link_to "Assign Truck", trucks_path, class: "btn btn-info btn-xs round" %>     
+      </div>
+      <hr>
+      <div id="noTruck">
+        <table class="table table-bordered table-condensed table-responsive">
+          <thead>
+            <tr>
+              <th>Truck Number</th>
+              <th>Truck Make</th>
+              <th>Truck Model</th>
+              <th>Truck Color</th>
+              <th>Truck Plate</th>
+              <th>Truck Plate State</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div id="the_truck_number"></div>
+              </td>
+              <td>
+                <div id="the_truck_make"></div>
+              </td>
+              <td>
+                <div id="the_truck_model"></div>
+              </td>
+              <td>
+                <div id="the_truck_color"></div>
+              </td>
+              <td>
+                <div id="the_truck_plate"></div>
+              </td>
+              <td>
+                <div id="the_truck_state"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <div id="noTrailerText" class="hidden">   
+        <strong class="label label-danger"> This Driver has no trailer!</strong> 
+        <%= link_to "Assign Trailer", trailers_path, class: "btn btn-info btn-xs round" %>    
+      </div>
+      <hr>
+      <div id="noTrailer">
+        <table class="table table-bordered table-condensed table-responsive">
+          <thead>
+            <tr>
+              <th>Trailer Number</th>
+              <th>Trailer Make</th>
+              <th>Trailer Type</th>
+              <th>Trailer Length</th>
+              <th>Trailer Door Type</th>
+              <th>Trailer Plate</th>
+              <td>Trailer Plate State</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div id="the_trailer_number"></div>
+              </td>
+              <td>
+                <div id="the_trailer_make"></div>
+              </td>
+              <td>
+                <div id="the_trailer_type"></div>
+              </td>
+              <td>
+                <div id="the_trailer_length"></div>
+              </td>
+              <td>
+                <div id="the_trailer_door_type"></div>
+              </td>
+              <td>
+                <div id="the_trailer_plate"></div>
+              </td>
+              <td>
+                <div id="the_trailer_state"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="panel panel-primary round">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-3">
+                  <i class="fa fa-stop-circle fa-5x"></i>
+                </div>
+                <div class="col-xs-9 text-right">
+                  <div class="huge"></div>
+                  <div>
+                    <h3><%= f.input :has_multiple_pd, label: "Multiple Addresses" %></h3>
+                  </div>
+                  <small>(Loads with multple stops)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end hideThisStuff--> 
+    <hr>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Consignor</p>
+          </span>
+          <label>Pick Up Date </label><br />
+          <%= f.text_field :pick_up_date, class: "bring_front",
+            placeholder: " Select Date" %>
+          <%= f.input :shipper_company_name, label: false, placeholder: "Pick Up Company Name" %>
+          <%= f.input :origin_street, label: false, placeholder: "Street Address"  %>
+          <%= f.input :origin_city, label: false, placeholder: "City"  %>
+          <%= f.input :origin_state, label: false,
+            collection: ApplicationRecord::States, include_blank: "State" %>
+          <%= f.input :origin_zip, label: false, placeholder: "zip code" %>
+          <label>phone</label><br>
+          <%= f.text_field :origin_phone, id: 'phone3' %> 
+          <%= f.input :origin_contact, label: false, placeholder: "Contact Person" %>
+          <%= f.input :pick_up_notes, placeholder: "dock 34 @12.45am" %>
+        </div>
+      </div>
+      <div id="idToHide">
+        <div class="col-sm-6">
+          <div class="form-group input-group">
+            <span class="input-group-addon">
+              <p class="vertical-text">Consignee</p>
+            </span>
+            <label>Delivery Date </label><br />
+            <%= f.text_field :delivery_date, class: "bring_front",
+              placeholder: " Select Date" %>
+            <%= f.input :receiver_company_name, label: false, placeholder: "Deliver to Company Name"  %>
+            <%= f.input :destination_street, label: false, placeholder: "Street Address"  %>
+            <%= f.input :destination_city, label: false, placeholder: "City"  %>
+            <%= f.input :destination_state, label: false,
+              collection: ApplicationRecord::States, include_blank: "State"  %>
+            <%= f.input :destination_zip, label: false, placeholder: "zip code" %>
+            <label>phone</label><br>
+            <%= f.text_field :destination_phone, id: 'phone4' %>
+            <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
+            <%= f.input :delivery_notes, placeholder: "see sally @3pm"  %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div id="idToHide">
+        <div class="col-sm-3">
+          <div class="form-group input-group">
+            <%= f.input :miles, label: "Total Miles" %> 
+            <%= f.input :truck_mpg, label: "Truck MPG" %>
+            <% @national_average_diesel_price %> 
+            <%= f.text_field :national_average_diesel_price,
+              value: (number_with_precision(@national_average_diesel_price, :precision => 2) || 0), 
+              label: "National Average Fuel Price", hidden: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end of row-->
+  </div>
+</div>
+<div class="form-actions pull-right">
+  <div id="theSubmitButton">
+    <%= f.button :submit, class: "btn btn-success btn-xs round" %>
+  </div>
+</div>
+<% end %>
+
+
+<div id="idToHide2"><%= render "calculate_distance" %></div>
+<div id="idToHide3"><%= render "new_map" %></div>
+

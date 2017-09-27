@@ -1,0 +1,317 @@
+<div class="col-sm-12 col-sm-offset-0 shadow round well">
+  <h2><%= @load.company_profile.company_name %></h2>
+  <h3>
+    <small> 
+    <%= link_to load_path(@load) do %>
+    <%= @load.title %>
+    <% end %>
+    </small>
+  </h3>
+  <div class="well well">
+    <%= simple_form_for(@load, html: { class: "input-sm" }) do |f| %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+          <h4> <%= @load.driver_user.full_name %></h4>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-ship"></i></span>
+          <h4> <%= @load.company_profile.company_name %></h4>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-arrows-h"></i></span>
+          <%= f.input :broker_shipper_load_id, label: false, placeholder: "Broker Load ID" %>  
+        </div>
+      </div>
+    </div>
+     <%= f.input :description, label: "Description",
+      placeholder: '24 pallets - 5 crates -18 boxes - 10 barrels - 6 steel rolls etc', 
+      class: "form-control" %>
+    <hr>
+    <div class='row'>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <div>
+            <label>Invoice Price</label>
+            <%= f.text_field :invoice_price, class: 'bsInputSize center form-control' %>
+          </div>
+          <br>
+          <div id="showToOwnerOperators">
+            <div>
+              <label>Booking Fee</label>
+              <%= f.text_field :booking_fee, class: 'bsInputSize center form-control'  %>
+            </div>
+            <br>
+            <%= f.input :driver_cents_pm %>  
+            <% if @load.driver_user.owner_operator? %>
+            <div>
+
+              <label>Percentage to Comapny</label>
+              <br>
+              <%= f.collection_select :percentage_id, Percentage.all, 
+              :id, :amount, class: 'form-control'  %>
+            </div>
+            <br />
+            <div>
+              <label>Company Fee:</label> 
+              <%= f.text_field :percent_coverted_to_dollars, 
+              class: 'bsInputSize center form-control', readonly: true  %>
+            </div>
+            <br />
+            <div>
+              <label>Operator Rate:</label>
+              <%= f.text_field :rate_to_owner_operator, class: 'bsInputSize center form-control'  %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>-->
+          <%= f.input :status_name, collection: ApplicationRecord::LoadStatusStatus,
+            include_blank: "Select Status", label: "Select Status" %> 
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>-->
+          <%= f.input :weight, label: 'Weight', placeholder: 'Weight', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2 col-sm-offset-0">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-balance-scale"></i></span>-->
+          <!--<span class="input-group-addon">e.g. 33x22</span>-->
+          <%= f.input :dimentions, label: 'Dimentions', placeholder: 'Dimentions', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <!--<span class="input-group-addon"><i class="fa fa-cubes"></i>-->
+          </span>
+          <%= f.input :commodity, label: "Commodity", placeholder: "Commodity", class: 'form-control' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <label>Broker rep name</label>
+          <%= f.text_field :broker_rep_name, label: "Broker rep name",  placeholder: "Broker Rep Name", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group input-group">
+          <label>Broker Email</label>
+          <%= f.text_field :broker_rep_email, label: "Broker email",  placeholder: "Broker email", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <label>Broker Office Tele</label>
+          <%= f.text_field :broker_rep_number, id: 'phone', class: 'form-control', label: "Broker Office Phone" %>
+        </div>
+      </div>
+      <div class="col-sm-2 col-sm-offset-0">
+        <div class="form-group input-group">
+          <label>Broker Cell</label>
+          <%= f.text_field :broker_rep_cell, id: 'phone2', class: 'form-control', label: "Broker Cell" %>    
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <label>After hours instructions</label><br> 
+          <%= f.text_field :broker_after_hours_instructions, label: "after hours instructions",  
+          placeholder: "ask for jim at gate, call frank at...", class: 'form-control'  %>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <hr>
+    <table class="table table-bordered table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th>Truck Number</th>
+          <th>Truck Make</th>
+          <th>Truck Model</th>
+          <th>Truck Color</th>
+          <th>Truck Plate</th>
+          <th>Truck Plate State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @load.truck_number %>
+          </td>
+          <td>
+            <%= @load.truck_make %>
+          </td>
+          <td>
+            <%= @load.truck_model %>
+          </td>
+          <td>
+            <%= @load.truck_color %>
+          </td>
+          <td>
+            <%= @load.truck_plate %>
+          </td>
+          <td>
+            <%= @load.truck_state %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <table class="table table-bordered table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th>Trailer Number</th>
+          <th>Trailer Make</th>
+          <th>Trailer Type</th>
+          <th>Trailer Length</th>
+          <th>Trailer Door Type</th>
+          <th>Trailer Plate</th>
+          <td>Trailer Plate State</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @load.trailer_number %>
+          </td>
+          <td>
+            <%= @load.trailer_make %>
+          </td>
+          <td>
+            <%= @load.trailer_type %>
+          </td>
+          <td>
+            <%= @load.trailer_length %>
+          </td>
+          <td>
+            <%= @load.trailer_door_type %>
+          </td>
+          <td>
+            <%= @load.trailer_plate %>
+          </td>
+          <td>
+            <%= @load.trailer_state %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon">
+            <p class="vertical-text">Consignor</p>
+          </span>
+          <p>
+            <label>Pick Up Date </label>
+            <%= @load.pick_up_date.strftime("%A %B %-d, %Y") %>  
+          </p>
+          <p>
+            <label>Company </label>
+            <%= @load.shipper_company_name %>
+          </p>
+          <p>
+            <label>Street </label>
+            <%= @load.origin_street %>
+          </p>
+          <p>
+            <label>City </label>
+            <%= @load.origin_city  %>  
+          </p>
+          <p>
+            <label>State </label>
+            <%= @load.origin_state %>
+          </p>
+          <p>
+            <label>Postal Code </label>
+            <%= @load.origin_zip %>
+          </p>
+          <p>
+            <label>phone</label><br> 
+            <%= f.text_field :origin_phone, id: 'phone3' %>
+          </p>
+          <p>
+            <%= f.input :origin_contact, label: "Contact" %>
+          </p>
+          <p> 
+            <%= f.input :pick_up_notes, label: "Notes", placeholder: "see sally @3pm" %>  
+          </p>
+        </div>
+      </div>
+      <% if @load.has_multiple_pd? %>    
+      <div class="col-sm-6">
+        <%= render 'calculate_address_section', f: f %>
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <div class="col-sm-6">
+    <div class="form-group input-group">
+      <span class="input-group-addon">
+        <p class="vertical-text">Consignee</p>
+      </span>
+      <p>
+        <label>Delivery Up Date </label>
+        <%= @load.delivery_date.strftime("%A %B %-d, %Y") %>  
+      </p>
+      <p>
+        <label>Company </label>
+        <%= @load.receiver_company_name %>
+      </p>
+      <p>
+        <label>Street </label>
+        <%= @load.destination_street %>
+      </p>
+      <p>
+        <label>City </label>
+        <%= @load.destination_city  %>  
+      </p>
+      <p>
+        <label>State </label>
+        <%= @load.destination_state %>
+      </p>
+      <p>
+        <label>Postal Code </label>
+        <%= @load.destination_zip %>
+      </p>
+      <p>
+        <label>phone</label><br>
+        <%= f.text_field :destination_phone, id: 'phone4' %> 
+      </p>
+      <p>
+        <%= f.input :destination_contact, label: "Contact" %>
+      </p>
+      <p> 
+        <%= f.input :delivery_notes, label: "Notes", placeholder: "be there by 3pm" %>  
+      </p>
+    </div>
+  </div>
+</div>
+<%= f.input :miles, label: false, placeholder: "Total Miles" %>
+<div class="form-actions pull-right">
+  <%= f.button :submit, class: "btn btn-success btn-sm round" %>
+</div>
+<% end %>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-0">
+  </div>
+</div>
+<% end %>
+<% render "edit_view_calculate_distance" unless @load.has_multiple_pd? %>   
+</div>
+</div>
+<% render "edit_map" unless @load.has_multiple_pd? %>
+<%= render "edit_js" %><!--JS for showing and removing inputs-->
+

@@ -1,0 +1,23 @@
+
+# development:
+#   adapter: redis
+#   url: redis://:redispass@redis-10902.c9.us-east-1-4.ec2.cloud.redislabs.com:10902
+
+# test:
+#   adapter: async 
+
+# production:
+#   adapter: redis
+#   url: redis://:redispass@redis-10902.c9.us-east-1-4.ec2.cloud.redislabs.com:10902
+
+development:
+  adapter: redis
+  url: redis://165.227.212.120/2 
+
+test: 
+  adapter: async  
+
+production:
+  adapter: redis
+  url: redis://165.227.212.120/2
+  

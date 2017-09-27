@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accept:</strong>
+  <%= @load_to_mobile.accept %>
+</p>
+
+<p>
+  <strong>Decline:</strong>
+  <%= @load_to_mobile.decline %>
+</p>
+
+<p>
+  <strong>Driver user:</strong>
+  <%= @load_to_mobile.driver_user_id %>
+</p>
+
+<p>
+  <strong>Driver email:</strong>
+  <%= @load_to_mobile.driver_email %>
+</p>
+
+<%= link_to 'Edit', edit_load_to_mobile_path(@load_to_mobile) %> |
+<%= link_to 'Back', load_to_mobiles_path %>

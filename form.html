@@ -1,0 +1,226 @@
+class CreateTruckStatuses < ActiveRecord::Migration[5.1]
+  def change
+    create_table :truck_statuses do |t|
+      t.integer :driver_user_id, index: true 
+      t.string :notes
+      t.boolean :assigned_to_this_driver
+      t.string :status
+      t.timestamps
+    end
+  end
+end
+
+class TruckStatus < ApplicationRecord
+  belongs_to :driver_user
+  has_one :truck
+end
+
+class CreateTruckStatuses < ActiveRecord::Migration[5.1]
+  def change
+    create_table :truck_statuses do |t|
+      t.integer :driver_user_id, index: true 
+      t.string :notes
+      t.boolean :assigned_to_this_driver
+      t.string :status
+      t.timestamps
+    end
+  end
+end
+
+
+
+
+
+
+
+
+<div class="col-sm-12 col-sm-offset-0 shadow animated">
+  <div class="well">
+    <label>four columns</label> 
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+    </div>
+    <label>three columns</label> 
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+          
+          Font Awesome
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon">$</span>
+          custom stuff
+          <span class="input-group-addon">.00</span>
+        </div>
+      </div>
+    </div>
+    <label>two columns</label> 
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon">||</span>
+          INPUT GOES HERE
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+          Font Awesome
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+==================================================================================
+<div class="col-sm-10 col-sm-offset-1 shadow">
+  <div class="well">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">  
+          <span class="input-group-addon">|</span>
+          <%= f.input :address_type, label: false, collection: ApplicationRecord::AddressType, label: false, placeholder: "Origin/Destination" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon">|</span>
+          ==========
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+                    ==========
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+                  ==========
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+          ==========
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+           ==========
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon">|</span>
+          ==========
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+          ==========
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group input-group">
+          <span class="input-group-addon"><i class="fa fa-eur"></i>
+          </span>
+            ==========
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+    <%= link_to 'Whatever', "#", class: 'btn btn-hrcprimary btn-xs' %>
+
+
+
+
+        
+
+
+TruckOperator.count    
+driver = DriverUser.find_by_id(5)
+operator = DriverUser.find_by_id(2)
+truck = Truck.first
+
+TruckOperators.count   
+truck.driver_users << the_operator
+
+team.operator = the_operator
+
+<% if @truck.present? %>    
+<%= @truck.year %>
+<%= @truck.make %>
+<%= @truck.model %>
+<% elsif current_company_user %>
+<%= link_to trucks_path do %> 
+Assign a Truck
+<% end %>
+<% else %>
+No Truck Assigned.
+<% end %>
+  </p>
+  <p>
+ <% if @trailer.present? %>    
+<%= @trailer.year %>
+<%= @trailer.make %>
+<%= @trailer.model %>
+<% elsif current_company_user %>
+<%= link_to trailers_path do %>
+Assign a Trailer
+<% end %>
+<% else %>
+No Trailer Assigned
+<% end %>

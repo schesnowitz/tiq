@@ -1,0 +1,124 @@
+<section id="partners" class="">  
+<style>
+  #scroller{
+  width: 10000%;
+}
+#scroller.ready > *{
+  display: inline-block;
+  float:left;
+  overflow: hidden;
+
+  webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+
+
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+
+
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+
+
+  -webkit-animation-name: marginator;
+  animation-name: marginator;
+
+
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+#scroller:hover > *{
+
+
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+@-webkit-keyframes marginator {
+  0% {
+    -webkit-transform: translate(0,0);
+    -webkit-transform: translate3d(0,0,0);
+  }
+  100% {
+    -webkit-transform: translate(-100%,0);
+    -webkit-transform: translate3d(-100%,0,0);
+  }
+}
+
+@keyframes marginator {
+  0% {
+
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+  100% {
+
+
+    -webkit-transform: translate(-100%,0);
+    transform: translate(-100%,0);
+
+
+    -webkit-transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
+  }
+}
+#scroller-wrapper{
+  overflow: hidden;
+}
+
+</style>
+
+
+<footer class="footer section-small padding: none; margin: none;"></footer>
+
+   <!--style="display: none"--><div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <header class="text-center">
+          <h2 class="section-title">
+            <% @fpt50.string_input %>
+            <span class="text-theme">
+            Just some of the great companies our team has worked with.
+            </span>
+          </h2>
+          <p class="section-subtitle">
+            <% @fpt51.string_input %> We hope to see you here soon!
+          </p>
+        </header>
+      </div>
+        </div>
+<div id="scroller-wrapper">
+  <div id="scroller">
+    <div>
+
+          
+          <%= link_to ("http://"+@fpt118.string_input), target: :_blank do %> 
+          <% if !@fpt12.image_input.present? || @fpt12.show_default_image == true %>
+          <%= image_tag "front_pages/351x150.png" %>
+          <% else %>
+          <%= image_tag @fpt12.image_input_url(:slider), class: "margin-right-20" %>
+          <% end %> 
+          <% end %> 
+          
+        
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $(function () {
+  var $first=$('#scroller>:first-child');
+  $('#scroller').width($first.outerWidth(true));
+  $first.clone(true).appendTo('#scroller');
+  $('#scroller').addClass('ready');
+ })
+});
+</script>
+

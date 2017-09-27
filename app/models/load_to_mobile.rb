@@ -1,0 +1,2 @@
+class LoadToMobile < ApplicationRecord
+end

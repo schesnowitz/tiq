@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Load To Mobiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accept</th>
+      <th>Decline</th>
+      <th>Driver user</th>
+      <th>Driver email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @load_to_mobiles.each do |load_to_mobile| %>
+      <tr>
+        <td><%= load_to_mobile.accept %></td>
+        <td><%= load_to_mobile.decline %></td>
+        <td><%= load_to_mobile.driver_user_id %></td>
+        <td><%= load_to_mobile.driver_email %></td>
+        <td><%= link_to 'Show', load_to_mobile %></td>
+        <td><%= link_to 'Edit', edit_load_to_mobile_path(load_to_mobile) %></td>
+        <td><%= link_to 'Destroy', load_to_mobile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Load To Mobile', new_load_to_mobile_path %>

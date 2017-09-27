@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Html:</strong>
+  <%= @load_pdf.html %>
+</p>
+
+<p>
+  <strong>Load:</strong>
+  <%= @load_pdf.load_id %>
+</p>
+
+<%= link_to 'Edit', edit_load_pdf_path(@load_pdf) %> |
+<%= link_to 'Back', load_pdfs_path %>
