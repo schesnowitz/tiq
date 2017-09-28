@@ -1,5 +1,5 @@
 class DriverStatementsController < ApplicationController
-  before_action :set_driver_statement, only: [:show, :edit, :update, :destroy]
+  before_action :set_driver_statement, only: [:show, :edit, :update, :destroy]  
   #before_action :validate_hrc_user, only: [:edit, :update, :new, :destroy] 
   # GET /driver_statements
   # GET /driver_statements.json
@@ -14,11 +14,12 @@ class DriverStatementsController < ApplicationController
     end
   end
 
-  # GET /driver_statements/1 
-  # GET /driver_statements/1.json
+
   def show
     @driver = DriverUser.find(params[:driver_user_id]) 
     @loads = @driver_statement.loads.order(:id)
+
+
   end
 
   # GET /driver_statements/new
@@ -86,6 +87,25 @@ class DriverStatementsController < ApplicationController
     redirect_to driver_statements_path, notice: 'Statements have been uploaded.'
   end   
 
+  def send_statement
+    @driver_statement = DriverStatement.find(params[:id])
+    @driver = DriverUser.find(params[:driver_user_id]) 
+    @loads = @driver_statement.loads.order(:id)
+    DriverStatementMailer.statement(@driver_statement).deliver_later 
+    flash[:success] = "The PDF statement has been sent to #{@driver_statement.driver_user.email}" 
+    redirect_back(fallback_location: root_path)
+    # respond_to do |format|
+    #   format.html 
+    #   format.pdf do  
+    #     render pdf: @driver_statement.payment_status, footer: { right: '[page] of [topage]' }
+        # ,     
+        # save_to_file: Rails.root.join('load_pdfs', "#{@load.id}#{@load.title}.pdf")
+
+        # DriverStatementMailer.statement(@driver_statement).deliver_later
+    #   end
+    # end  
+
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -93,8 +113,8 @@ class DriverStatementsController < ApplicationController
       @driver_statement = DriverStatement.find(params[:id])
     end
     
-    def validate_hrc_user
-      if !validate_hrc_user  
+    def validate_company_user
+      if !validate_company_user  
         redirect_to root_path
       flash[:danger] = " #{current_user.first_name}, The function requested does not exist or you are not authorized for access."
       end

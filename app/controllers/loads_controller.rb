@@ -39,39 +39,9 @@ class LoadsController < ApplicationController
     @driver_locations = DriverLocation.where({ driver_email: @driver.email }).all.order('created_at desc')   
     @driver_location = @driver_locations.first    
     @user = @driver 
-    # LoadMailerWorker.perform_async() 
-    # respond_to do |format|
-    #   format.html 
-    #   format.pdf do 
-    #     render pdf: @load.title, footer: { right: '[page] of [topage]' },     
-    #     save_to_file: Rails.root.join('load_pdfs', "#{@load.id}#{@load.title}.pdf")
-
-    #     LoadMailer.active_load(@load).deliver_later  
-    #   end
-    # end   
- 
   end
 
-  def send_pdf
 
-    @percentage = @load.percentage 
-    @company_profile = @load.company_profile    
-    @transactions = @load.transactions  
-    @vendor_profile = VendorProfile.all
-    @load_doc = @load.load_documents 
-    @driver = @load.driver_user 
-    @driver_email = @driver.email
-    @owner_operator_transactions = @load.transactions
-    @cd_transactions = @load.transactions.where(["expense_type = ?", "Cash Advance"])
-    @load_origin_addresses = @load.load_origin_addresses.order('created_at ASC')
-
-    @driver_locations = DriverLocation.where({ driver_email: @driver.email }).all.order('created_at desc')   
-    @driver_location = @driver_locations.first    
-    @user = @driver 
-    LoadMailer.active_load(@load).deliver_later 
-    flash[:success] = "some text"
-    redirect_back(fallback_location: root_path)
-  end
 
 
   def new 
@@ -148,6 +118,20 @@ class LoadsController < ApplicationController
   def load_to_mobile
   end
 
+  def send_pdf 
+    @company_profile = @load.company_profile    
+
+    @driver = @load.driver_user 
+    @driver_email = @driver.email
+    @load_origin_addresses = @load.load_origin_addresses.order('created_at ASC')
+
+    @driver_locations = DriverLocation.where({ driver_email: @driver.email }).all.order('created_at desc')   
+    @driver_location = @driver_locations.first    
+
+    LoadMailer.active_load(@load).deliver_later 
+    flash[:success] = "The PDF has been sent to #{@driver.email}"
+    redirect_back(fallback_location: root_path)
+  end
   private
     def validate_admin_user
       if !current_company_user.admin? 

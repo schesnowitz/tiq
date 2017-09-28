@@ -63,9 +63,6 @@ Rails.application.routes.draw do
         resources :transactions
           resources :addresses 
             resources :load_origin_addresses  
-            # collection do
-            #   put :send_pdf
-            # end
   end 
    
 
@@ -98,7 +95,11 @@ Rails.application.routes.draw do
   end
   
   root to: "front_pages#show" 
-  get 'loads/send_pdf/:id', to: 'loads#send_pdf' , as: 'send_pdf'
+  # get 'driver_users/:id/driver_statements/:id/statement', to: 'driver_statements#statement' , as: 'statement'
+  
+  get 'driver_user/:driver_user_id/driver_statements/:id/send_statement', to: 'driver_statements#send_statement', as: 'send_statement' 
+
+  get 'loads/send_pdf/:id', to: 'loads#send_pdf', as: 'send_pdf'
   get 'edit_show', to: 'front_pages#edit_show' 
   get 'drivers', to: 'front_pages#drivers' 
   get 'technology', to: 'front_pages#technology' 

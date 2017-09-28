@@ -17,4 +17,9 @@ test:
 production:
   <<: *default
   host: <%= ENV["POSTGRES_HOST"] %>
-  database: fr8track_production
+  database: iq_production
+
+  staging:
+  <<: *default
+  host: <%= ENV["POSTGRES_HOST"] %>
+  database: iq_sandbox

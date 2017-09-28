@@ -3,20 +3,22 @@
   <div class="col-sm-6">
     <div class="panel panel-success">
       <div class="panel-heading">
-        <h4>Load Origin</h4>
+      <strong>Load Origin</strong><br>
+        <% if @load.pick_up_date.present? %>
+        <%= (@load.pick_up_date.strftime("%A %B %-d, %Y")) %>
+        <% end %>
       </div>
       <div class="panel-body">
         <address>
           <strong><%= @load.shipper_company_name %></strong><br>
           <%= @load.origin_street %><br>
           <%= @load.origin_city  %> <%= @load.origin_state  %> <%= @load.origin_zip  %><br>
-          <small>Phone: </small><%= @load.origin_phone  %><br />
-          <small>Contact: </small><%= @load.origin_contact  %>
+          <small>Phone: </small><%= @load.origin_phone %><br />
+          <small>Contact: </small><%= @load.origin_contact %>
         </address>
       </div>
       <div class="panel-footer">
-        <h4>Date - Notes</h4>
-        <%= (@load.pick_up_date.strftime("%A %B %-d, %Y")) %><br> 
+        <h4>----</h4>
         <% if @load.pick_up_notes.present? %>
         <span class="text-red"><%= @load.pick_up_notes %></span>
         <% else %>
@@ -25,38 +27,14 @@
       </div>
     </div>
   </div>
-  <% if @destination.present? %>               
+  <% if !@load.receiver_company_name.blank? %>          
   <div class="col-sm-6">
     <div class="panel panel-danger">
       <div class="panel-heading">
-        <h4>Load Final Destination</h4>
-      </div>
-      <div class="panel-body">
-        <address>
-          <strong><%= @destination.company %></strong><br>
-          <%= @destination.street %><br>
-          <%= @destination.city  %> <%= @destination.state  %> <%= @destination.zip  %><br>
-          <small>Phone: </small><%= @destination.phone  %><br />
-          <small>Contact: </small><%= @destination.contact  %>
-        </address>
-      </div>
-      <div class="panel-footer">
-        <h4>Date - Notes</h4>
-        <%= @destination.pick_up_date.strftime("%A %B %-d, %Y") %> 
-        <br>
-        <% if @destination.notes.present? %>
-        <span class="text-red"><%= @destination.notes %></span>
-        <% else %>
-        No notes entered.
+      <strong>Load Destination</strong><br>
+        <% if @load.delivery_date.present? %>
+        <%= @load.delivery_date.strftime("%A %B %-d, %Y") %>
         <% end %>
-      </div>
-    </div>
-  </div>
-  <% else %>               
-  <div class="col-sm-6">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <h4>Load Final Destination</h4>
       </div>
       <div class="panel-body">
         <address>
@@ -68,20 +46,17 @@
         </address>
       </div>
       <div class="panel-footer">
-        <h4>Delivery Details</h4>
-        <%= @load.delivery_date.strftime("%A %B %-d, %Y") %> 
-        <br>
+        <h4>----</h4>
+
         <% if @load.delivery_notes.present? %>
         <span class="text-red"><%= @load.delivery_notes %></span>
         <% else %>
-        No notes were entered.
+        No notes entered.
         <% end %>
       </div>
     </div>
-      
   </div>
   <% end %>
-
-  <hr>
-  <%= render "loads/partials/lefttabs/address" %>
+ 
+  <%= render "loads/partials/lefttabs/pdf_template_origin_addresses" %>  
 </div>
