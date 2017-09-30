@@ -41,7 +41,7 @@ RailsAdmin.config do |config|
     delete
     show_in_app
 
-  config.excluded_models = ["Address", "AddressCategory", "DriverRate", "LoadOriginAddress", "Mc", "Percentage"]  
+  config.excluded_models = ["Address", "AddressCategory", "DriverRate", "LoadOriginAddress", "Mc", "Percentage", "DriverCheckin"]  
     ## With an audit adapter, you can add:
     # history_index
     # history_show

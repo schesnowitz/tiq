@@ -12,7 +12,9 @@ class DriverStatementMailer < ApplicationMailer
       render_to_string(
       template: 'driver_statements/statement_template.pdf.erb',  
       layout: 'layouts/application.pdf.erb'))   
-      subject: "Statement for #{@driver_statement.driver_user.full_name}"
-      mail to: @driver_statement.driver_user.email 
+
+      mail(to: @driver_statement.driver_user.email,
+      cc: "steve@chesnowitz.com",
+      subject: "Statement for #{@driver_statement.driver_user.full_name}") 
   end
 end

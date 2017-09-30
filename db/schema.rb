@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927083612) do
+ActiveRecord::Schema.define(version: 20170930154824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -254,13 +254,6 @@ ActiveRecord::Schema.define(version: 20170927083612) do
     t.index ["load_id"], name: "index_load_documents_on_load_id"
   end
 
-  create_table "load_pdfs", force: :cascade do |t|
-    t.text "html"
-    t.integer "load_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "load_to_mobiles", force: :cascade do |t|
     t.boolean "accept"
     t.boolean "decline"
@@ -350,6 +343,17 @@ ActiveRecord::Schema.define(version: 20170927083612) do
     t.string "broker_rep_cell"
     t.string "broker_after_hours_instructions"
     t.string "description"
+    t.decimal "pounds"
+    t.decimal "kilos"
+    t.boolean "is_pounds", default: false
+    t.boolean "is_kilos", default: false
+    t.boolean "is_hazmat", default: false
+    t.boolean "is_temp_control", default: false
+    t.boolean "is_fahrenheit", default: false
+    t.boolean "is_celsius", default: false
+    t.decimal "fahrenheit"
+    t.decimal "celsius"
+    t.decimal "kilometers"
     t.index ["company_profile_id"], name: "index_loads_on_company_profile_id"
     t.index ["company_user_id"], name: "index_loads_on_company_user_id"
     t.index ["driver_statement_id"], name: "index_loads_on_driver_statement_id"

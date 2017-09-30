@@ -12,7 +12,7 @@ class Load < ApplicationRecord
   
   belongs_to :driver_statement, optional: true 
   has_many :load_documents, dependent: :destroy  
-  has_many :load_pdfs, dependent: :destroy  
+
 
   has_many :load_origin_addresses, dependent: :destroy 
   accepts_nested_attributes_for :load_origin_addresses

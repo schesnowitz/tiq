@@ -3,7 +3,6 @@ class DriverUser < User
   has_one :trailer  
   has_many :driver_statements, through: :loads 
   has_many :driver_statements
-  has_many :driver_checkins 
   has_many :messages  
   belongs_to :driver_rate      
   has_many :load_to_mobiles, dependent: :destroy  

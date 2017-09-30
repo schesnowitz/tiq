@@ -6,5 +6,7 @@ class AddFieldsToLoad < ActiveRecord::Migration[5.1]
     add_column :loads, :broker_rep_cell, :string
     add_column :loads, :broker_after_hours_instructions, :string 
     add_column :loads, :description, :string 
+
+
   end
 end

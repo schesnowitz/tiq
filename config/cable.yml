@@ -19,5 +19,8 @@ test:
 
 production:
   adapter: redis
-  url: redis://165.227.212.120/2
+  url: "redis://#{ENV['DATA_REDIS_HOST']}:6379/6"
   
+staging:
+  adapter: redis
+  url: "redis://#{ENV['DATA_REDIS_HOST']}:6379/3"

@@ -2,7 +2,7 @@ frontPage = FrontPage.create()
 
 150.times do |num|
 front_page_text = FrontPageText.create!(string_input: " -- This is a String.",
-                                        text_input: " -- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                                        text_input: " -- Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                                         image_input: "",
                                         front_page_id: 1)
 puts front_page_text.inspect                                  
@@ -82,7 +82,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 10)
 
 front_page_text.string_input = "Erie"
 front_page_text.text_input   = "10 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/10/acCargo.gif"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -90,7 +90,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 11)
 
 front_page_text.string_input = "PA"
 front_page_text.text_input   = "11 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/11/afn.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -99,7 +99,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 12)
 
 front_page_text.string_input = "16501"
 front_page_text.text_input   = "12 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/12/chLogo.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -107,23 +107,23 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 13)
 
 front_page_text.string_input = "13 string"
 front_page_text.text_input   = "13 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/13/coke.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 14)
 
-front_page_text.string_input = "14 string"
+front_page_text.string_input = "3024804"
 front_page_text.text_input   = "14 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/14/landstar.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 15)
 
-front_page_text.string_input = "15 string"
+front_page_text.string_input = "36332"
 front_page_text.text_input   = "15 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/15/newEnergy_logo.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -131,7 +131,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 16)
 
 front_page_text.string_input = "16 string"
 front_page_text.text_input   = "16 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/16/publix.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -140,7 +140,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 17)
 
 front_page_text.string_input = "17 string"
 front_page_text.text_input   = "17 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/17/sunTeck.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -148,7 +148,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 18)
 
 front_page_text.string_input = "18 string"
 front_page_text.text_input   = "18 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/18/Total_Quality_Logistics_Logo.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -156,7 +156,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 19)
 
 front_page_text.string_input = "19 string"
 front_page_text.text_input   = "19 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/19/trinity.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -164,7 +164,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 20)
 
 front_page_text.string_input = "20 string"
 front_page_text.text_input   = "20 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/20/walmart.jpg"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -172,7 +172,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 21)
 
 front_page_text.string_input = "21 string"
 front_page_text.text_input   = "21 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/21/images.png"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -181,7 +181,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 22)
 
 front_page_text.string_input = "22 string"
 front_page_text.text_input   = "22 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/22/usaTruck.png"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -189,7 +189,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 23)
 
 front_page_text.string_input = "23 string"
 front_page_text.text_input   = "23 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/23/challenger.png"
+front_page_text.image_input  = ""
 
 front_page_text.save!     
 
@@ -197,7 +197,7 @@ front_page_text = FrontPageText.find_or_initialize_by(id: 24)
 
 front_page_text.string_input = "24 string"
 front_page_text.text_input   = "24 text"
-front_page_text.image_input  = "/uploads/front_page_text/image_input/24/dayAndRoss.JPG" 
+front_page_text.image_input  = "" 
 
 front_page_text.save!     
 
@@ -942,7 +942,7 @@ front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 116)
 
-front_page_text.string_input = "aircanada.com/cargo/en/" 
+front_page_text.string_input = "" 
 front_page_text.text_input   = "116 text"
 front_page_text.image_input  = "116 image"
 
@@ -950,7 +950,7 @@ front_page_text.save!
  
 front_page_text = FrontPageText.find_or_initialize_by(id: 117)
 
-front_page_text.string_input = "www.loadafn.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "117 text"
 front_page_text.image_input  = "117 image"
 
@@ -965,7 +965,7 @@ front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 119)
 
-front_page_text.string_input = "us.coca-cola.com" 
+front_page_text.string_input = "" 
 front_page_text.text_input   = "119 text"
 front_page_text.image_input  = "119 image"
 
@@ -973,7 +973,7 @@ front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 120)
 
-front_page_text.string_input = "landstar.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "120 text"
 front_page_text.image_input  = "120 image" 
 front_page_text.save!
@@ -982,7 +982,7 @@ front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 121)
 
-front_page_text.string_input = "hydroone.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "121 text"
 front_page_text.image_input  = "121 image"
 front_page_text.save!
@@ -990,63 +990,63 @@ front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 122)
 
-front_page_text.string_input = "publix.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "122 text"
 front_page_text.image_input  = "122 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 123)
 
-front_page_text.string_input = "suntecktts.com"
+front_page_text.string_input = "pamtransport.com"
 front_page_text.text_input   = "123 text"
 front_page_text.image_input  = "123 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 124)
 
-front_page_text.string_input = "www.tql.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "124 text"
 front_page_text.image_input  = "124 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 125)
 
-front_page_text.string_input = "trinitylogistics.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "125 text"
 front_page_text.image_input  = "125 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 126)
 
-front_page_text.string_input = "walmart.com" 
+front_page_text.string_input = "" 
 front_page_text.text_input   = "126 text"
 front_page_text.image_input  = "126 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 127)
 
-front_page_text.string_input = "budweiser.com" 
+front_page_text.string_input = "" 
 front_page_text.text_input   = "127 text"
 front_page_text.image_input  = "127 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 128)
 
-front_page_text.string_input = "customer.usa-truck.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "128 text"
 front_page_text.image_input  = "128 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 129)
 
-front_page_text.string_input = "challenger.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "129 text"
 front_page_text.image_input  = "129 image"
 front_page_text.save!
 
 front_page_text = FrontPageText.find_or_initialize_by(id: 130)
 
-front_page_text.string_input = "dayross.com"
+front_page_text.string_input = ""
 front_page_text.text_input   = "130 text"
 front_page_text.image_input  = "130 image"
 front_page_text.save!

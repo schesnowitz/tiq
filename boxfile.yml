@@ -15,6 +15,7 @@ deploy.config:
 
   transform:
     - rake db:setup_or_migrate  
+    # - rake db:seeds 
 # add a database
 # data.db:
 #   image: nanobox/postgresql
@@ -52,9 +53,8 @@ worker.main:
   log_watch:
     sidekiq: 'sidekiq.log'
 
-# data.redis:
-#   image: nanobox/redis:4.0
-#   # optional redis configs
-#   config:
-#     tcp_keepalive: 60
-#     databases: 16
+data.redis:
+  image: nanobox/redis:4.0
+  config:
+    tcp_keepalive: 60
+    databases: 16

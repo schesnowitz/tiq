@@ -122,4 +122,6 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'chesnowitz.com' } 
   # config.action_mailer.default_url_options = { host: 'transportationiq.com' } 
 
+  
+
 end

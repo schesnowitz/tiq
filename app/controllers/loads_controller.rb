@@ -234,6 +234,17 @@ class LoadsController < ApplicationController
                                     :broker_rep_number,
                                     :broker_rep_cell,
                                     :broker_after_hours_instructions,
+                                    :pounds, 
+                                    :kilos, 
+                                    :is_pounds,
+                                    :is_kilos,
+                                    :is_hazmat,
+                                    :is_temp_control,
+                                    :is_fahrenheit,
+                                    :is_celsius,
+                                    :fahrenheit,
+                                    :celsius,
+                                    :kilometers,
                                     load_origin_addresses_attributes: 
                                       [
                                       :street,

@@ -64,10 +64,10 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <%= f.input :image, as: :file, label: "Profile Image" %>  
+            <%= f.input :profile_image, as: :file, label: "Profile Image" %>  
           </div>
           <div class="col-md-4">
-            <%= f.input :profile_image, as: :file, label: "Profile Background" %> 
+            <%= f.input :profile_bg, as: :file, label: "Profile Background" %> 
           </div>
           <div class="col-md-4">
             <% if !@user.type == "DriverUser" %>
