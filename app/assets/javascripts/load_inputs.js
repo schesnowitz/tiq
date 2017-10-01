@@ -1,5 +1,154 @@
+
 $(document).ready(function(){ 
   
+    $('#load_pounds').change(function() {
+      var value = parseFloat($(this).val()) / 2.2046; 
+    $("#outputKilograms").html(value); 
+    });
+
+    $('#load_kilos').on("change", function() {
+      var value = parseFloat($(this).val()) * 2.2046;  
+    $("#outputPounds").html(value); 
+    });
+
+    $("#load_kilos").change(function() { 
+      var check = function(){
+          setTimeout(check, 200);    
+        if ($('#load_kilos').val() == '') {  
+          $("#outputPounds").html(''); 
+        } else {
+              console.log("not empty");
+     }
+    }
+    check();
+      });
+
+
+      $("#load_pounds").change(function() { 
+        var check = function(){
+            setTimeout(check, 200);    
+          if ($('#load_pounds').val() == '') {  
+            $("#outputKilograms").html(''); 
+          } else {
+                console.log("not empty");
+       }
+      }
+      check();
+        });
+
+    $('#load_is_pounds').change(function(){
+        if(this.checked) 
+        $('#show_hide_is_kilos_check').addClass("hidden");  
+        else
+        $('#show_hide_is_kilos_check').removeClass("hidden");        
+    });
+
+    $('#load_is_kilos').change(function(){
+        if(this.checked)  
+        $('#show_hide_is_pounds_check').addClass("hidden");
+        else
+        $('#show_hide_is_pounds_check').removeClass("hidden");       
+    });
+
+    $('#load_is_kilos').change(function(){
+      if(this.checked)  
+      $('#show_me_the_kilograms').removeClass("hidden");
+      else
+      $('#show_me_the_kilograms').addClass("hidden");       
+  });
+
+  $('#load_is_pounds').change(function(){
+    if(this.checked)  
+    $('#show_me_the_pounds').removeClass("hidden");
+    else
+    $('#show_me_the_pounds').addClass("hidden");       
+});
+
+    $('#load_is_kilos').change(function(){
+      if(this.checked) 
+      $('#inputPounds, #load_pounds, #outputPounds').val("");
+      end    
+    });
+
+      $('#inputKilograms').change(function() {
+        $('#load_kilos').val($(this).val());
+    });
+  
+      $('#inputPounds').change(function() {
+        $('#load_pounds').val($(this).val());
+    });
+
+    $('#load_is_pounds').change(function(){
+      if(this.checked) 
+      $('#inputKilograms, #load_kilos').val("");
+      end    
+    });
+
+    $('#load_is_kilos').change(function(){
+        if(this.checked) 
+        $('#show_hide_kilo_input').removeClass("hidden"); 
+        else
+        $('#show_hide_kilo_input').addClass("hidden");      
+    });
+
+    $('#load_is_pounds').change(function(){
+        if(this.checked) 
+        $('#show_hide_pound_input').removeClass("hidden"); 
+        else
+        $('#show_hide_pound_input').addClass("hidden");     
+    });
+
+
+    $('#load_is_temp_control').on('change', function() {
+        $('#load_is_fahrenheit, #load_is_celsius').not(this).prop('checked', false);   
+    });
+
+
+    $('#load_is_fahrenheit').change(function(){
+        if(this.checked) 
+        $('#is_celsius_check').addClass("hidden");  
+        else
+        $('#is_celsius_check').removeClass("hidden");        
+    });
+
+    $('#load_is_celsius').change(function(){
+        if(this.checked) 
+        $('#is_fahrenheit_check').addClass("hidden");  
+        else
+        $('#is_fahrenheit_check').removeClass("hidden");        
+    });
+
+    $('#load_is_temp_control').change(function(){
+        if(this.checked) 
+        $('#is_fahrenheit_check, #is_celsius_check').removeClass("hidden"); 
+        else
+        $('#is_fahrenheit_check, #is_celsius_check, #celsius_input, #fahrenheit_input').addClass("hidden");        
+    });
+
+
+  $('#load_is_pounds, #load_is_kilos').on('change', function() {
+    $('#load_is_pounds, #load_is_kilos').not(this).prop('checked', false);  
+  });
+
+  $('#load_is_fahrenheit, #load_is_celsius').on('change', function() {
+    $('#load_is_fahrenheit, #load_is_celsius').not(this).prop('checked', false);
+  });
+
+    $('#load_is_celsius').change(function(){
+        if(this.checked) 
+        $('#celsius_input').removeClass("hidden");  
+        else
+        $('#celsius_input').addClass("hidden");          
+    });
+
+    $('#load_is_fahrenheit').change(function(){
+        if(this.checked) 
+        $('#fahrenheit_input').removeClass("hidden");  
+        else
+        $('#fahrenheit_input').addClass("hidden");         
+    });
+
+
 
 // <!--sets :truck_type column as hidden field for record keeping in case truck 
 // is removed from system-->

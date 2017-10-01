@@ -33,9 +33,78 @@
         </div>
       </div>
     </div>
+
+
+
+    <%= f.input :kilometers %>       
+    <%= f.input :is_hazmat %>
     <%= f.input :description, label: "Description",
-      placeholder: '24 pallets - 5 crates -18 boxes - 10 barrels - 6 steel rolls etc', 
-      class: "form-control" %>
+      placeholder: '24 pallets - 5 crates -18 boxes - 10 barrels - 6 steel rolls etc', class: "form-control" %>
+ 
+
+
+
+
+
+<div id="show_hide_is_pounds_check">
+<%= f.input :is_pounds %>
+</div>
+<div id="show_hide_is_kilos_check">
+<%= f.input :is_kilos %>
+</div>
+
+<div id="is_temp_control_check">
+<%= f.input :is_temp_control %>
+</div>
+
+<div id="is_fahrenheit_check" class="hidden">
+<%= f.input :is_fahrenheit %>
+</div>
+
+<div id="is_celsius_check" class="hidden"> 
+<%= f.input :is_celsius %>
+</div>
+
+
+
+
+
+<div id="fahrenheit_input" class="hidden"> 
+<%= f.input :fahrenheit %>
+</div>
+<div id="celsius_input" class="hidden">  
+<%= f.input :celsius %>
+</div>
+
+<div id='show_me_the_pounds' class="hidden">
+        <%= f.input :pounds %>
+        <p>Kilograms: <span id="outputKilograms"></span></p>
+</div>
+
+<div id='show_me_the_kilograms' class="hidden"> 
+<%= f.input :kilos %>
+<p>Pounds: <span id="outputPounds"></span></p> 
+</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+
+
+    </script>
+         
+
+
     <hr>
     <div class='row'>
       <div class="col-sm-2">
@@ -367,4 +436,8 @@
 
 <div id="idToHide2"><%= render "calculate_distance" %></div>
 <div id="idToHide3"><%= render "new_map" %></div>
+
+
+
+
 
