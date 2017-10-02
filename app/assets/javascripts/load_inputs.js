@@ -1,16 +1,36 @@
 
 $(document).ready(function(){ 
-  
+  // Celsius to Fahrenheit
+  var inputC = $('#load_celsius'); 
+  $(inputC).on("change", function() {
+    var valueC = parseFloat($(this).val());
+    var value_C_to_F = (  (9/5) *valueC + 32 ).toFixed(2);  
+      $("#outputFahrenheit").html(value_C_to_F); 
+  });
+
+
+
+  // Fahrenheit to Celsius
+  var inputF = $('#load_fahrenheit');
+  $(inputF).on("change", function() {
+    var valueF = parseFloat($(this).val());
+    var value_F_to_C = ( (5/9) *(valueF - 32)).toFixed(2); 
+      $("#outputCelsius").html(value_F_to_C); 
+  });
+
+
+    // pounds to kilograms
     $('#load_pounds').change(function() {
       var value = parseFloat($(this).val()) / 2.2046; 
     $("#outputKilograms").html(value); 
     });
-
+    // kilograms to pounds
     $('#load_kilos').on("change", function() {
       var value = parseFloat($(this).val()) * 2.2046;  
     $("#outputPounds").html(value); 
     });
 
+    // reset all kilogram inputs on timer based on value of input
     $("#load_kilos").change(function() { 
       var check = function(){
           setTimeout(check, 200);    
@@ -21,9 +41,9 @@ $(document).ready(function(){
      }
     }
     check();
-      });
+  });
 
-
+    // reset all pound inputs on timer based on value of input
       $("#load_pounds").change(function() { 
         var check = function(){
             setTimeout(check, 200);    
@@ -34,7 +54,7 @@ $(document).ready(function(){
        }
       }
       check();
-        });
+    });
 
     $('#load_is_pounds').change(function(){
         if(this.checked) 
@@ -125,11 +145,12 @@ $(document).ready(function(){
         $('#is_fahrenheit_check, #is_celsius_check, #celsius_input, #fahrenheit_input').addClass("hidden");        
     });
 
-
+    // removes other check box selections
   $('#load_is_pounds, #load_is_kilos').on('change', function() {
     $('#load_is_pounds, #load_is_kilos').not(this).prop('checked', false);  
   });
 
+  // removes other checkbox selections
   $('#load_is_fahrenheit, #load_is_celsius').on('change', function() {
     $('#load_is_fahrenheit, #load_is_celsius').not(this).prop('checked', false);
   });
@@ -148,7 +169,47 @@ $(document).ready(function(){
         $('#fahrenheit_input').addClass("hidden");         
     });
 
+  // reset celsius inputs on boolean click
 
+  $('#load_is_fahrenheit').change(function(){
+    if(this.checked) 
+    $('#load_celsius').val("");
+    end    
+  });
+
+    // reset fahrenheit inputs on boolean click
+
+    $('#load_is_celsius').change(function(){
+      if(this.checked) 
+      $('#load_fahrenheit').val(""); 
+      end    
+    });
+
+      // reads #load_celsius value  - used to set converted output of #outputFahrenheit to "" if #load_celsius is blank
+    $("#load_celsius").change(function() { 
+      var check = function(){
+          setTimeout(check, 200);    
+        if ($('#load_celsius').val() == '') {  
+          $("#outputFahrenheit").html(''); 
+        } else {
+              console.log("load_celsius not empty");
+     }
+    }
+    check();
+  });
+
+      // reads #load_fahrenheit value  - used to set converted output of #outputCelsius to "" if #load_fahrenheit is blank
+      $("#load_fahrenheit").change(function() { 
+        var check = function(){
+            setTimeout(check, 200);    
+          if ($('#load_fahrenheit').val() == '') {  
+            $("#outputCelsius").html(''); 
+          } else {
+                console.log("load_fahrenheit not empty");
+       }
+      }
+      check();
+    });
 
 // <!--sets :truck_type column as hidden field for record keeping in case truck 
 // is removed from system-->

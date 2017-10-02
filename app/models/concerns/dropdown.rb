@@ -93,7 +93,19 @@ CompanyProfileMembershipStatus =
   'Wyoming',
   "Ontario",
   "British Colombia",
-  "Ontario"
+  'Ontario',	
+  'Quebec',
+  'British Columbia',	
+  'Alberta',
+  'Manitoba',
+  'Saskatchewan',
+  'Nova Scotia',
+  'New Brunswick',
+  'Newfoundland - Labrador',	
+  'Prince Edward Island',
+  'Northwest Territories',	
+  'Nunavut',	
+  'Yukon'
   ]
 
       
@@ -160,8 +172,10 @@ CompanyProfileMembershipStatus =
   ExpenseType =   
   [
     ['Fuel', 'Fuel'],
+    ['Repair', 'Repair'],
+    ['Lumper', 'Lumper'],
+    ['Maintenance', 'Maintenance'],
     ['Cash Advance', 'Cash Advance'],
-    ['Booking Fee', 'Booking Fee'],
     ['Other', 'Other'] 
   ]    
   
@@ -257,6 +271,37 @@ FeColor =
 ["Teal", "Teal"],
 ["Cyborg", "Cyborg"],
 ["Darkly", "Darkly"]
+]
+
+
+Commodity =
+[
+  "Household Goods",
+  "Metal - sheets, coils, rolls",
+  'Motor Vehicles',
+  'Drive/Tow away',
+  'Logs, Poles, Beams, Lumber',
+  'Building Materials',
+  'Machinery',
+  'Fresh Produce',
+  'Liquids/Gases',
+  'Intermodal',
+  'Oilfield Equipment',
+  'Livestock',
+  'Grain, Feed, Hay',
+  'Coal/Coke',
+  'Meat',
+  'Garbage/Refuse',
+  'US Mail',
+  'Chemicals',
+  'Commodities Dry Bulk',
+  'Refrigerated Food',
+  'Beverages',
+  'Paper Products',
+  'Utilities',
+  'Agricultural/Farm Supplies',
+  'Construction',
+  'Water Well'
 ]
 end
 
