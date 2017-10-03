@@ -31,6 +31,7 @@
     <h3 class="panel-title">Destination Address <em>(receiver/consignee)</em></h3>
   </div>
   <div class="panel-body">
+   <%= render 'loads/edit_load_partials/calculate_address_section', f: f %>
             <label>Delivery Date </label><br />
             <%= f.text_field :delivery_date, class: "bring_front",
               placeholder: " Select Date" %>

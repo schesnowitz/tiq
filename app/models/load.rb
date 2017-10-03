@@ -17,7 +17,7 @@ class Load < ApplicationRecord
   has_many :load_origin_addresses, dependent: :destroy 
   accepts_nested_attributes_for :load_origin_addresses
   
-  before_validation :set_company_driver_rate
+  before_validation :set_company_driver_rate, :is_temperature_control_needed, :validate_the_weight
 
   before_validation :delivery_date, date: { after_or_equal_to: Proc.new { :pick_up_date }, 
   message: "(error) Delivery can't be before pick up" }, on: :create
@@ -37,8 +37,18 @@ class Load < ApplicationRecord
   :driver_user_first_name_or_driver_user_last_name_or_origin_city_or_destination_city_or_origin_state_or_destination_state_or_company_profile_company_name_or_broker_shipper_load_id
  
 
+  def is_temperature_control_needed
+    if self.is_temp_control?
+      validates_presence_of :fahrenheit, :celsius
+    end
+  end
 
-  
+  def validate_the_weight
+    if self.is_pounds? || self.is_kilos?
+      validates_presence_of :pounds, :kilos
+    end
+  end
+ 
   def is_company_driver
       driver_user.try(:company_driver) == true
   end
@@ -80,7 +90,30 @@ class Load < ApplicationRecord
     destination.street + " " + destination.city + " " + destination.state + " " + destination.zip  
     end
   end
-  
+
+  def has_multiple_deliveries
+    if self.has_multiple_pd?
+      return "Yes"
+    else
+      return "No"
+  end
+end
+
+  def has_hazmat
+    if self.is_hazmat?
+      return "Yes" 
+    else
+      return "No"
+  end
+end
+
+  def destination_address
+    if destination.try(:city).blank? and destination.try(:state).blank?
+    return self.destination_street + ", " + self.destination_city + ", " + self.destination_state + ", " + self.destination_zip
+    else
+    destination.street + " " + destination.city + " " + destination.state + " " + destination.zip  
+    end
+  end
 
   
   def self.as_csv

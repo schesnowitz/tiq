@@ -1,34 +1,67 @@
 
-$(document).ready(function(){ 
+$(document).ready(function(){  
   // Celsius to Fahrenheit
-  var inputC = $('#load_celsius'); 
+  var inputC = $('#inputCelsius');  
   $(inputC).on("change", function() {
     var valueC = parseFloat($(this).val());
-    var value_C_to_F = (  (9/5) *valueC + 32 ).toFixed(2);  
+    var value_C_to_F = (  (9/5) * valueC + 32 ).toFixed(2);  
       $("#outputFahrenheit").html(value_C_to_F); 
+      $("#load_fahrenheit").val(value_C_to_F);  
+      $("#load_celsius").val(valueC);  
   });
 
 
 
   // Fahrenheit to Celsius
-  var inputF = $('#load_fahrenheit');
+  var inputF = $('#inputFahrenheit');
   $(inputF).on("change", function() {
     var valueF = parseFloat($(this).val());
     var value_F_to_C = ( (5/9) *(valueF - 32)).toFixed(2); 
       $("#outputCelsius").html(value_F_to_C); 
+      $("#load_celsius").val(value_F_to_C); 
+      $("#load_fahrenheit").val(valueF);  
   });
 
 
     // pounds to kilograms
-    $('#load_pounds').change(function() {
+    $('#inputPounds').change(function() {
       var value = parseFloat($(this).val()) / 2.2046; 
     $("#outputKilograms").html(value); 
+    $("#load_kilos").val(value); 
     });
     // kilograms to pounds
-    $('#load_kilos').on("change", function() {
+    $('#inputKilograms').on("change", function() { 
       var value = parseFloat($(this).val()) * 2.2046;  
     $("#outputPounds").html(value); 
+    $("#load_pounds").val(value); 
     });
+
+    //  edit load 
+    $('#edit_load_pounds').change(function() {
+      var value = parseFloat($(this).val()) / 2.2046; 
+    $("#edit_load_kilos").val(value);  
+    });
+    // kilograms to pounds
+    $('#edit_load_kilos').on("change", function() { 
+      var value = parseFloat($(this).val()) * 2.2046;  
+    $("#edit_load_pounds").val(value); 
+    }); 
+
+      // EDIT LOAD Celsius to Fahrenheit
+  var inputC = $('#edit_load_celsius');  
+  $(inputC).on("change", function() {
+    var valueC = parseFloat($(this).val());
+    var value_C_to_F = (  (9/5) * valueC + 32 ).toFixed(2);  
+      $("#edit_load_fahrenheit").val(value_C_to_F);  
+  });
+  var inputF = $('#edit_load_fahrenheit');
+  $(inputF).on("change", function() {
+    var valueF = parseFloat($(this).val());
+    var value_F_to_C = ( (5/9) *(valueF - 32)).toFixed(2); 
+      $("#edit_load_celsius").val(value_F_to_C);  
+ 
+  });
+  
 
     // reset all kilogram inputs on timer based on value of input
     $("#load_kilos").change(function() { 
@@ -86,7 +119,15 @@ $(document).ready(function(){
 
     $('#load_is_kilos').change(function(){
       if(this.checked) 
-      $('#inputPounds, #load_pounds, #outputPounds').val("");
+      $('#inputPounds').val(""); 
+      $('#outputPounds').html("");
+      end    
+    });
+
+    $('#load_is_pounds').change(function(){ 
+      if(this.checked) 
+      $('#inputKilograms').val("");
+      $('#outputKilograms').html("");
       end    
     });
 
@@ -98,11 +139,7 @@ $(document).ready(function(){
         $('#load_pounds').val($(this).val());
     });
 
-    $('#load_is_pounds').change(function(){
-      if(this.checked) 
-      $('#inputKilograms, #load_kilos').val("");
-      end    
-    });
+
 
     $('#load_is_kilos').change(function(){
         if(this.checked) 
@@ -173,7 +210,8 @@ $(document).ready(function(){
 
   $('#load_is_fahrenheit').change(function(){
     if(this.checked) 
-    $('#load_celsius').val("");
+    $('#inputCelsius, #load_celsius').val("");  
+    $('#outputCelsius').html("");
     end    
   });
 
@@ -181,7 +219,8 @@ $(document).ready(function(){
 
     $('#load_is_celsius').change(function(){
       if(this.checked) 
-      $('#load_fahrenheit').val(""); 
+      $('#inputFahrenheit, #load_fahrenheit').val("");  
+      $('#outputFahrenheit').html("");   
       end    
     });
 

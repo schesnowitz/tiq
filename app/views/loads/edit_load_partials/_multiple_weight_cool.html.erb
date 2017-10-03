@@ -13,6 +13,28 @@
         </div>
       </div>
     </div>
+
+       <% if @load.pounds.present? || @load.kilos.present? %>
+    <div class="col-xs-3">
+      <div class="shadow2 round">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Weight</h3>
+          </div>
+          <div class="panel-body">
+
+            <p>current weight in pounds <%= number_with_precision(@load.pounds, precision: 2) %></p>  
+            <p>current weight in kilograms <%= number_with_precision(@load.kilos, precision: 2) %></p>  
+   
+            <%= f.input :pounds, input_html: { id: "edit_load_pounds" } %> 
+            <%= f.input :kilos, input_html: { id: "edit_load_kilos" } %>  
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+<% else %>
     <div class="col-xs-3">
       <div class="shadow2 round">
         <div class="panel panel-info">
@@ -51,7 +73,42 @@
         </div>
       </div>
     </div>
+<% end %>
+        <% if @load.fahrenheit.present? || @load.celsius.present? %>
     <div class="col-xs-6">
+      <div class="shadow2 round">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Keep it cool?  Is it hazardous?</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-6">
+                <div id="is_temp_control_check">
+                  <h4><%= image_tag "hazardous.jpg" %><%= f.input :is_hazmat, label: "Load contains Hazardous Materials?" %> 
+                    
+                  </h4>
+                </div>
+              </div>
+              <div class="col-xs-6">
+              <%= image_tag 'tempcontrol' %> 
+                <p>current temp in fahrenheit <%= @load.fahrenheit %></p>
+                <p>current temp in celsius <%= @load.celsius %></p> 
+                
+                <%= f.input :fahrenheit, input_html: { id: "edit_load_fahrenheit" } %>
+                <%= f.input :celsius, input_html: { id: "edit_load_celsius" } %> 
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+ <div class="col-xs-6">
       <div class="shadow2 round">
         <div class="panel panel-info">
           <div class="panel-heading">
@@ -97,3 +154,5 @@
       </div>
     </div>
   </div>
+
+<% end %>
