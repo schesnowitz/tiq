@@ -62,16 +62,16 @@ Rails.application.configure do
   /https:\/\/localhost:3000.*/ ] 
  
 
-  # ActionMailer::Base.delivery_method = :smtp
-  # ActionMailer::Base.smtp_settings = {
-  #   address:                  'smtp.office365.com',
-  #   port:                     587,
-  #   authentication:           :login,  
-  #   user_name:                ENV["MAIL_USERNAME"],
-  #   password:                 ENV["MAIL_PASSWORD"],
-  #   domain:                   'transportationiq.com',  
-  #   enable_starttls_auto:     true, 
-  # }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address:                  'smtp.office365.com',
+    port:                     587,
+    authentication:           :login,  
+    user_name:                "schesnowitz@transportationiq.com",
+    password:                 "@Layla112207",
+    domain:                   'transportationiq.com',  
+    enable_starttls_auto:     true, 
+  }
 
 
 
@@ -91,34 +91,44 @@ Rails.application.configure do
 
   # Works using steve not actionmailer
 
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    address:                  'smtp.office365.com',
-    port:                     25,
-    authentication:           :login, 
-    enable_starttls_auto:     true, 
-    user_name:                "TransportIQApp@transportationiq.com",  
-    password:                 "Tr@nsp0rt1Q", 
-    domain:                   'transportationiq.com', 
-    ssl: "true",
-    from: "TransportIQApp@transportationiq.com"  
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   address:                  'smtp.office365.com',
+  #   port:                     25,
+  #   authentication:           :login, 
+  #   enable_starttls_auto:     true, 
+  #   user_name:                "TransportIQApp@transportationiq.com",  
+  #   password:                 "Tr@nsp0rt1Q", 
+  #   domain:                   'transportationiq.com'
 
-  }   
+  # }   
+
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   address:                  'smtp.office365.com',
+  #   port:                     25,
+  #   authentication:           :login, 
+  #   enable_starttls_auto:     true, 
+  #   user_name:                "TransportIQApp@transportationiq.com",  
+  #   password:                 "Tr@nsp0rt1Q", 
+  #   domain:                   'transportationiq.com'
+
+  # }   
 
 
   # WORKS!
 
   # config.action_mailer.delivery_method = :smtp
   
-  #   config.action_mailer.smtp_settings = {
-  #     address: "smtp.gmail.com",
-  #     port: 587,
-  #     domain: "example.com",
-  #     authentication: "plain",
-  #     enable_starttls_auto: true,
-  #     user_name: ENV["MAIL_USERNAME"], 
-  #     password: ENV["MAIL_PASSWORD"]  
-  #   }
+    # config.action_mailer.smtp_settings = {
+    #   address: "smtp.gmail.com",
+    #   port: 587,
+    #   domain: "example.com",
+    #   authentication: "plain",
+    #   enable_starttls_auto: true,
+    #   user_name: ENV["MAIL_USERNAME"], 
+    #   password: ENV["MAIL_PASSWORD"]  
+    # } 
   
     config.action_mailer.default_url_options = { host: "localhost:3000" }
   # config.action_mailer.default_url_options = { host: 'chesnowitz.com' } 

@@ -5,8 +5,12 @@
           <div class="panel-heading">
             <h3 class="panel-title">
               <p class="text-center">      
-                <%= image_tag 'stop' %> 
+                <%= image_tag 'stop' %> <br> 
+                <% if @load.has_multiple_pd? %>
+                <%= @load.has_multiple_deliveries %>, this load has has multiple stops
+                <% else %>
                 <%= f.input :has_multiple_pd, label: "Has Multiple Stops?" %>
+                <% end %>
               </p>
             </h3>
           </div>

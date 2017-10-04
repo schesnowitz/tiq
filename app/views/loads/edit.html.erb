@@ -8,117 +8,47 @@
     </small>
   </h3> 
 
-    <%= simple_form_for(@load, html: { class: "input-sm" }) do |f| %>
+<%= simple_form_for(@load, html: { class: "input-sm" }) do |f| %>
 
 <%= render 'loads/edit_load_partials/top_row', f: f %>
-<%= render 'loads/edit_load_partials/load_truck_info' %>
+<%= render 'loads/edit_load_partials/load_truck_info', f: f %> 
 <%= render 'loads/edit_load_partials/rate_details_broker_contact', f: f %> 
 <%= render 'loads/edit_load_partials/multiple_weight_cool', f: f %> 
+<%= render 'loads/edit_load_partials/load_addresses', f: f %>  
 
-    <div class="row">
-      <div class="col-sm-6">
+<%= f.input :broker_after_hours_instructions, label: "After hours instructions", placeholder: "ask for jim at gate, call frank at...", class: 'form-control'  %>
+  <% if !@load.has_multiple_pd? %>
+  <div class="row">
+    <div id="idToHide">
+      <div class="col-sm-3">
         <div class="form-group input-group">
-          <span class="input-group-addon">
-            <p class="vertical-text">Consignor</p>
-          </span>
-          <p>
-            <label>Pick Up Date </label>
-            <%= @load.pick_up_date.strftime("%A %B %-d, %Y") %>  
-          </p>
-          <p>
-            <label>Company </label>
-            <%= @load.shipper_company_name %>
-          </p>
-          <p>
-            <label>Street </label>
-            <%= @load.origin_street %>
-          </p>
-          <p>
-            <label>City </label>
-            <%= @load.origin_city  %>  
-          </p>
-          <p>
-            <label>State </label>
-            <%= @load.origin_state %>
-          </p>
-          <p>
-            <label>Postal Code </label>
-            <%= @load.origin_zip %>
-          </p>
-          <p>
-            <label>phone</label><br> 
-            <%= f.text_field :origin_phone, id: 'phone3' %>
-          </p>
-          <p>
-            <%= f.input :origin_contact, label: "Contact" %>
-          </p>
-          <p> 
-            <%= f.input :pick_up_notes, label: "Notes", placeholder: "see sally @3pm" %>  
-          </p>
+          <%= f.input :truck_mpg, label: "Truck MPG" %>
+          <% @national_average_diesel_price %> 
+          <%= f.input :miles, input_html: { id: "edit_load_miles" }  %> 
+          <%= f.input :kilometers, input_html: { id: "edit_load_kilometers_2" } %> 
+
+          <%= f.text_field :national_average_diesel_price,
+            value: (number_with_precision(@national_average_diesel_price, :precision => 2) || 0), 
+            label: "National Average Fuel Price", hidden: true %>
         </div>
       </div>
-      <% if @load.has_multiple_pd? %>    
-      <div class="col-sm-6">
-        <%= render 'calculate_address_section', f: f %>
-      </div>
     </div>
   </div>
-  <% else %>
-  <div class="col-sm-6">
-    <div class="form-group input-group">
-      <span class="input-group-addon">
-        <p class="vertical-text">Consignee</p>
-      </span>
-      <p>
-        <label>Delivery Up Date </label>
-        <%= @load.delivery_date.strftime("%A %B %-d, %Y") %>  
-      </p>
-      <p>
-        <label>Company </label>
-        <%= @load.receiver_company_name %>
-      </p>
-      <p>
-        <label>Street </label>
-        <%= @load.destination_street %>
-      </p>
-      <p>
-        <label>City </label>
-        <%= @load.destination_city  %>  
-      </p>
-      <p>
-        <label>State </label>
-        <%= @load.destination_state %>
-      </p>
-      <p>
-        <label>Postal Code </label>
-        <%= @load.destination_zip %>
-      </p>
-      <p>
-        <label>phone</label><br>
-        <%= f.text_field :destination_phone, id: 'phone4' %> 
-      </p>
-      <p>
-        <%= f.input :destination_contact, label: "Contact" %>
-      </p>
-      <p> 
-        <%= f.input :delivery_notes, label: "Notes", placeholder: "be there by 3pm" %>  
-      </p>
+  <!--end of row-->
+  <div class="form-actions pull-right">
+
+    <div id="theSubmitButton">
+      <%= f.button :submit, class: "btn btn-success round" %>
+      <% end %>
+
     </div>
+
   </div>
-</div>
-<%= f.input :miles, label: false, placeholder: "Total Miles" %>
-<div class="form-actions pull-right">
-  <%= f.button :submit, class: "btn btn-success btn-sm round" %>
+    <% if !@load.has_multiple_pd? %>
+      <div id="idToHide2" class="pull-left"><%= render "calculate_distance" %></div> 
+      <% end %>
 </div>
 <% end %>
-<div class="row">
-  <div class="col-sm-3 col-sm-offset-0">
-  </div>
+
 </div>
-<% end %>
-<% render "edit_view_calculate_distance" unless @load.has_multiple_pd? %>   
-</div>
-</div>
-<% render "edit_map" unless @load.has_multiple_pd? %>
-<%= render "edit_js" %><!--JS for showing and removing inputs-->
 

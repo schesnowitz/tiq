@@ -100,7 +100,7 @@ joe = DriverUser.create(
   password_confirmation: "password1", 
   first_name: "Joe",
   last_name: "Sixpack",
-  email: "joe@example.com",  
+  email: "s.chesnowitz@gmail.com",   
   cellphone: "7169864010",  
   street: Faker::Address.street_name,
   telephone: Faker::PhoneNumber.phone_number,

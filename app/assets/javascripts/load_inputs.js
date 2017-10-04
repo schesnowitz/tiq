@@ -262,18 +262,25 @@ $(document).ready(function(){
     });
   });
 
-
+  // jQuery(window).on("load", function(){
+    
+  //     $('#element').change();
+    
+  //   });
 
 // <!--sets the truck number-->
  
  
+// $(document).ready(function(){     
+//     $("#select-driver").bind('change', function () { 
   $(function() {      
-    $("#select-driver").change(function() {  
+    $("#select-driver").change(function() { 
       $('#truck_number').val(this.value);  
       var truckNumber = $("#truck_number option:selected").text();
       $('#the_truck_number').html(truckNumber);   
       $('#load_truck_number').val(truckNumber);  
     }); 
+    // $("#select-driver").trigger('change');
   });
 
 
@@ -382,29 +389,24 @@ $(document).ready(function(){
 // <!--adds warning color to truck info if driver has no truck assigned-->
  
 
-  $("#select-driver").change(function() { 
-  var check = function(){
-      setTimeout(check, 200);    
-    if ($('#the_truck_make').is(':empty')) { 
+    $("#select-driver").change(function() { 
+    var check = function(){
+        setTimeout(check, 200);    
+      if ($('#the_truck_make').is(':empty')) { 
 
-            // console.log("Empty"); 
-  $('#noTruck').css('background-color', '#ffb3b3'); 
-  $( "#noTruckText" ).removeClass( "hidden" );
-    $( "#noTruckText" ).show();
-    } else {
-          // console.log("not empty");
-        
-    $('#noTruck').css('background-color', '#e6ffe6');   
-     $( "#noTruckText" ).hide();  
+              // console.log("Empty"); 
+    $('#noTruck').css('background-color', '#ffb3b3'); 
+    $( "#noTruckText" ).removeClass( "hidden" );
+      $( "#noTruckText" ).show();
+      } else {
+            // console.log("not empty");
+          
+      $('#noTruck').css('background-color', '#e6ffe6');   
+      $( "#noTruckText" ).hide();  
+    }
   }
-}
-check();
-
-  });
-
-
- 
-
+  check();
+    });
 
     $('select[id="select-driver"]').change(function() {
         var str = $('select[id="select-driver"] option:selected').text();
@@ -412,8 +414,8 @@ check();
           console.log("length is greater than 15");  
             $('#hideThisStuff').show();   
         } else {
-                      $('#hideThisStuff').hide();  
-          }
+        $('#hideThisStuff').hide();  
+        }
     });
 
  
@@ -767,6 +769,13 @@ $('#setVal').on('click' , function() {
 
 
 
+// loads with multiple stops calculations
+
+
+  $("#load_kilometers").val($("#kilometers").val());   
+
+
+  $("#load_miles").val($("#miles").val());   
 
 
 

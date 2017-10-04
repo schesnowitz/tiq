@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@transportationiq.com' 
+  default from: 'TransportIQ  <schesnowitz@transportationiq.com>'   
   layout 'mailer'
 end
+ 

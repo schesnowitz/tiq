@@ -44,7 +44,8 @@ $(function() {
 
         $('#result').html("It is " + miles + " miles from " + origin + " to " + destination);
               $("#load_miles").val(iNum); 
-              $("#load_kilometers").val(iNum/0.62137);
+              $("#load_kilometers, #edit_load_kilometers_2").val(iNum/0.62137); 
+                          $("#edit_load_miles").val(iNum);   
       }
     }
   }

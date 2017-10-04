@@ -32,10 +32,10 @@ input.bsInputSize[type="text"] {
 }
 
 
-// sets height of navbar
+/* // sets height of navbar
 // .navbar .nav > li > a {
 //   line-height: 40px;
-// }
+// } */
 
 .footer {
 /*    position: fixed;
@@ -45,7 +45,9 @@ input.bsInputSize[type="text"] {
     background-color: #eee;
 }
 
-
+ .hidden-truck-trailer-edit-load {
+    display: none;
+}
 
 body {
   overflow-x: hidden;
@@ -55,7 +57,7 @@ body {
 }
 
 
-#showhide {
+#showhide { 
   display: none;
 }
 

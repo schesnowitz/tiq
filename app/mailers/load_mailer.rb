@@ -19,3 +19,6 @@ class LoadMailer < ApplicationMailer
     end
   end
   
+#   load = Load.last
+#   mail = LoadMailer.active_load(load) 
+#   mail.deliver_now
