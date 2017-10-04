@@ -273,14 +273,15 @@ $(document).ready(function(){
  
 // $(document).ready(function(){     
 //     $("#select-driver").bind('change', function () { 
+  // $("#select-driver").trigger('change'); 
   $(function() {      
-    $("#select-driver").change(function() { 
+    $("#select-driver").change(function() {
       $('#truck_number').val(this.value);  
       var truckNumber = $("#truck_number option:selected").text();
       $('#the_truck_number').html(truckNumber);   
       $('#load_truck_number').val(truckNumber);  
     }); 
-    // $("#select-driver").trigger('change');
+    // $("#select-driver").trigger('change');  
   });
 
 
@@ -387,9 +388,10 @@ $(document).ready(function(){
 
 
 // <!--adds warning color to truck info if driver has no truck assigned-->
- 
+ //     $("#select-driver").bind('change', function () { 
+  // $("#select-driver").trigger('change'); 
 
-    $("#select-driver").change(function() { 
+  $("#select-driver").bind('change', function () {
     var check = function(){
         setTimeout(check, 200);    
       if ($('#the_truck_make').is(':empty')) { 
@@ -398,6 +400,7 @@ $(document).ready(function(){
     $('#noTruck').css('background-color', '#ffb3b3'); 
     $( "#noTruckText" ).removeClass( "hidden" );
       $( "#noTruckText" ).show();
+      // $("#select-driver").trigger('change');
       } else {
             // console.log("not empty");
           
