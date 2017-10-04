@@ -772,7 +772,7 @@ $('#setVal').on('click' , function() {
 
 
 
-// loads with multiple stops calculations
+// loads with multiple stops calculations 
 
 
   $("#load_kilometers").val($("#kilometers").val());   
@@ -781,8 +781,17 @@ $('#setVal').on('click' , function() {
   $("#load_miles").val($("#miles").val());   
 
 
-
-
+// shows equipment if a new driver selected during edit load
+  $('select[id="select-driver"]').change(function() {
+    var str = $('select[id="select-driver"] option:selected').text();
+    if (str.length > 1 ) {   
+       console.log("Fr8track.io")
+        $('#editDriverEquipment').removeClass( "hidden" )   
+                    $('#hideDriverEquipment').addClass( "hidden" )   
+    } else {
+    console.log("Fr8track.io") 
+    }
+});
 
 
 

@@ -1,11 +1,11 @@
-    <div class="row">
-        <div class="col-xs-6">
-         <div class="shadow2 round"> 
-<div class="panel panel-success">
-  <div class="panel-heading">
-    <h3 class="panel-title">Origin Address <em>(shipper/consignor)</em></h3>
-  </div>
-  <div class="panel-body">
+<div class="row">
+  <div class="col-xs-6">
+    <div class="shadow2 round">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Origin Address <em>(shipper/consignor)</em></h3>
+        </div>
+        <div class="panel-body">
           <label>Pick Up Date </label><br />
           <%= f.text_field :pick_up_date, class: "bring_front",
             placeholder: " Select Date" %>
@@ -19,18 +19,18 @@
           <%= f.text_field :origin_phone, id: 'phone3' %> 
           <%= f.input :origin_contact, label: false, placeholder: "Contact Person" %>
           <%= f.input :pick_up_notes, placeholder: "dock 34 @12.45am" %>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-        <div id="idToHide">
-        <div class="col-xs-6">
-        <div class="shadow2 round"> 
+  <div id="idToHide">
+    <div class="col-xs-6">
+      <div class="shadow2 round">
         <div class="panel panel-danger">
-  <div class="panel-heading">
-    <h3 class="panel-title">Destination Address <em>(receiver/consignee)</em></h3>
-  </div>
-  <div class="panel-body">
+          <div class="panel-heading">
+            <h3 class="panel-title">Destination Address <em>(receiver/consignee)</em></h3>
+          </div>
+          <div class="panel-body">
             <label>Delivery Date </label><br />
             <%= f.text_field :delivery_date, class: "bring_front",
               placeholder: " Select Date" %>
@@ -44,9 +44,9 @@
             <%= f.text_field :destination_phone, id: 'phone4' %>
             <%= f.input :destination_contact, label: false, placeholder: "Contact Person" %>
             <%= f.input :delivery_notes, placeholder: "see sally @3pm"  %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-</div>
 </div>
