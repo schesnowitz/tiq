@@ -24,7 +24,7 @@ class Load < ApplicationRecord
 
   validates_presence_of :load_size, :pick_up_date, :national_average_diesel_price, 
   :driver_user_id, :company_profile, :rate_to_owner_operator, :status_name, 
-  :invoice_price, :origin_street, :origin_city, :origin_state, :truck_make, :truck_number, :kilometers,
+  :invoice_price, :origin_street, :origin_city, :origin_state, :truck_make, :truck_number, :kilometers, :commodity, 
   :trailer_make, :trailer_number, :origin_zip, :broker_rep_name
   
   validates :destination_street, :destination_city, :miles, :destination_state, :delivery_date, :destination_zip,
@@ -106,6 +106,14 @@ end
       return "No"
   end
 end
+
+  def needs_temp_control_model
+    if self.is_temp_control?
+      return "Yes" 
+    else
+      return "No"
+    end
+  end
 
   def destination_address
     if destination.try(:city).blank? and destination.try(:state).blank?

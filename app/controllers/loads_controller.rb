@@ -132,6 +132,8 @@ class LoadsController < ApplicationController
     flash[:success] = "The PDF has been sent to #{@driver.email}"
     redirect_back(fallback_location: root_path)
   end
+
+  
   private
     def validate_admin_user
       if !current_company_user.admin? 

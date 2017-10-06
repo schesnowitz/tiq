@@ -8,14 +8,14 @@ run.config:
     - nginx
     - ImageMagick
     - libXrender 
-#
+
 deploy.config:
   extra_steps:
     - rake assets:precompile
 
   transform:
     - rake db:setup_or_migrate  
-    # - rake db:seeds 
+    # - rake db:seeds  
 # add a database
 # data.db:
 #   image: nanobox/postgresql

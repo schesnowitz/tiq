@@ -1,13 +1,13 @@
 class Truck < ApplicationRecord 
   has_many :truck_miles, dependent: :destroy
   has_many :truck_images, dependent: :destroy 
-  # validates_presence_of :number, :make, :vin, :year, :service_status, :add_remove_driver
+  validates_presence_of :number, :make, :vin, :year, :service_status
   # validates_uniqueness_of :number, :vin
   mount_uploader :image, TruckImageUploader  
  
   belongs_to :driver_user, optional: true 
-  validates_uniqueness_of :driver_user, :on => :update, message: " error -- This driver already has a trailer assigned," + 
-  " Unassign this Driver from their currnet trailer, then come back and try again." 
+  validates_uniqueness_of :driver_user, :on => :update, message: " error -- This driver already has a truck assigned," + 
+  " Unassign this Driver from their currnet truck, then come back and try again." 
   before_save :remove_driver  
 
 

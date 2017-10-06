@@ -1,4 +1,3 @@
-
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <% if @transactions.present? %>
@@ -59,7 +58,7 @@
         Rate To Driver
       </th>
       <th>
-        % to HRC
+        % to Company
       </th>
     </tr>
   </thead>
@@ -75,57 +74,19 @@
         <%= number_to_currency(@load.rate_to_owner_operator) %> 
       </td>
       <td>
-    <%= number_to_percentage(@load.percentage.amount, precision: 2) %> 
-
+        <%= number_to_percentage(@load.percentage.amount, precision: 2) %> 
       </td>
     </tr>
   </tbody>
 </table>
-
-
 <% @miles_divided_truck_mpg = @load.miles / @load.truck_mpg %>
 <% @projected_diesel_cost = @load.national_average_diesel_price * @miles_divided_truck_mpg %>
 <table class="table table-bordered table-striped table-hover table-condensed table-responsive">
-	<thead>
-		<tr>
-			<th>Average Fuel Price</th>
-			<th>Projected Fuel Cost</th> 
-
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><%= number_to_currency(@load.national_average_diesel_price) %></td>
-			<td><%= number_to_currency(@projected_diesel_cost) %></td>
-
-		</tr>
-	</tbody>
-</table>
-
-
-
-
-
-
-
-
-
-<table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
-      <th>
-        $ From %
-      </th>
-
-      <th>
-        Miles
-      </th>
-      <th>
-        Gross RPM
-      </th>
-      <th>
-        HRC RPM
-      </th>
+      <th>$ From %</th>
+      <th>Average Fuel Price</th>
+      <th>Projected Fuel Cost</th>
     </tr>
   </thead>
   <tbody>
@@ -133,6 +94,28 @@
       <td>
         <%= number_to_currency(@load.percent_coverted_to_dollars)  %> 
       </td>
+      <td><%= number_to_currency(@load.national_average_diesel_price) %>/gallon</td>
+      <td><%= number_to_currency(@projected_diesel_cost) %></td>
+    </tr>
+  </tbody>
+</table>
+<!--Miles-->
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr class="warning">
+      <th>
+        Distance Miles
+      </th>
+      <th>
+        Gross RPM
+      </th>
+      <th>
+        Company RPM
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       <td>
         <%= (@load.miles) %>
       </td>
@@ -140,15 +123,50 @@
         <%= number_to_currency(@load.invoice_price / @load.miles) %>
       </td>
       <td>
-        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.miles)  %> 
+        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.miles)  %>
       </td>
     </tr>
   </tbody>
 </table>
-Driver Section
+<!--kilometers--> 
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
+    <tr class="info">
+      <th>
+        Distance KM
+      </th>
+      <th>
+        Gross RPK
+      </th>
+      <th>
+        Company RPK
+      </th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
+      <td>
+        <%= number_with_precision(@load.kilometers, percision: 2) %>
+      </td>
+      <td>
+        <%= number_to_currency(@load.invoice_price / @load.kilometers) %>
+      </td>
+      <td>
+        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.kilometers)  %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% owner_operator_debit_credit_total = owner_operator_total_debits - owner_operator_total_credits %>
+<% debit_credit_total = total_debits - total_credits %>
+<% rate_after_expenses = @load.rate_to_owner_operator - owner_operator_debit_credit_total %>
+<% rate_per_mile_after_expenses = rate_after_expenses / @load.miles %>
+<% rate_per_km_after_expenses = rate_after_expenses / @load.kilometers %>
+<strong>Driver Section</strong>
+<!--miles-->
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr class="success">
       <th>
         Load Rate
       </th>
@@ -158,6 +176,7 @@ Driver Section
       <th>
         Rate Per Mile
       </th>
+      <th>Net RPM</th>
     </tr>
   </thead>
   <tbody>
@@ -171,22 +190,48 @@ Driver Section
       <td>
         <%= number_to_currency(@load.rate_to_owner_operator / @load.miles) %>
       </td>
+      <td><%= number_to_currency(rate_per_mile_after_expenses) %></td>
     </tr>
   </tbody>
 </table>
-
-	<% owner_operator_debit_credit_total = owner_operator_total_debits - owner_operator_total_credits %>
-	<% debit_credit_total = total_debits - total_credits %>
-	<% rate_after_expenses = @load.rate_to_owner_operator - owner_operator_debit_credit_total %>
-	<% rate_per_mile_after_expenses = rate_after_expenses / @load.miles %>
+<!--kilometers-->
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
+    <tr class="success">
+      <th>
+        Load Rate
+      </th>
+      <th>
+        Paid Kilometers
+      </th>
+      <th>
+        Rate Per Kilometer
+      </th>
+      <th>Net RPK</th>
+    </tr>
+  </thead>
+  <tbody>
     <tr>
+      <td>
+        <%= number_to_currency(@load.rate_to_owner_operator) %>
+      </td>
+      <td>
+        <%= number_with_precision(@load.kilometers, percision: 2) %>
+      </td>
+      <td>
+        <%= number_to_currency(@load.rate_to_owner_operator / @load.kilometers) %>
+      </td>
+      <td><%= number_to_currency(rate_per_km_after_expenses) %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered table-striped table-condensed table-responsive">
+  <thead>
+    <tr class="active">
       <th>Total Debits</th>
       <th>Total Credits</th>
       <th>Total Debits/Credits</th>
       <th>Rate After Expenses</th>
-      <th>Net RPM</th>
     </tr>
   </thead>
   <tbody>
@@ -195,9 +240,8 @@ Driver Section
       <td>+<%= number_to_currency(owner_operator_total_credits) %></td>
       <td>-<%= number_to_currency(owner_operator_debit_credit_total) %></td>
       <td><%= number_to_currency(rate_after_expenses)  %></td>
-      <td><%= number_to_currency(rate_per_mile_after_expenses) %></td> 
     </tr>
   </tbody>
 </table>
 <br />
-<%= render "loads/partials/righttabs/route" %>
+<%= render "loads/partials/righttabs/route" %> 

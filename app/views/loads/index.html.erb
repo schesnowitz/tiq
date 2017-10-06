@@ -34,10 +34,13 @@
       <th>Driver</th>
       <th>Shipper/Broker</th>
       <th>Shipper Load #</th>
+
+      <th><%= sort_link @search_loads, :is_hazmat, "Hazmat" %></th>
+      <th><%= sort_link @search_loads, :is_temp_control, "Temp Control"  %></th> 
       <th>Debits</th>
       <th>Credits</th>
       <th><%= sort_link @search_loads, :commodity, "Commodity" %></th>
-      <th><%= sort_link @search_loads, :weight, "Weight" %></th>
+      <th><%= sort_link @search_loads, :kilos, "Weight" %></th>
       <th><%= sort_link @search_loads, :load_size, "Load Size" %></th>
       <th><%= sort_link @search_loads, :invoice_price, "Invoice Price" %></th>
       <th>Driver Rate</th>
@@ -85,6 +88,8 @@
         <% end %>
       </td>
       <td><%= load.broker_shipper_load_id %></td>
+      <td><%= load.has_hazmat %></td>  
+      <td><%= load.needs_temp_control_model %></td> 
       <td>
         <% load.transactions.each do |transaction| %>
         <%= number_to_currency(transaction.debit) %> 
@@ -98,7 +103,9 @@
         <% end %>
       </td>
       <td><%= load.commodity %></td>
-      <td><%= load.weight %></td>
+      <td><%= load.needs_temp_control_model %></td>
+            <td><%= load.has_hazmat %></td> 
+      <td><%= load.pounds %> LBS <br><%= number_with_precision(load.kilos, precision: 2)%> KGS</td>
       <td><%= load.load_size %></td>
       <td>
         <%= number_to_currency(load.invoice_price) %>

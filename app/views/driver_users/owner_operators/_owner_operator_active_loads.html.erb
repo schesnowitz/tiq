@@ -36,7 +36,7 @@
         <%= load.title %> 
         <% end %>
       </td>
-      <td><%= load.miles %></td> 
+      <td><%= load.miles %>/MI <%= number_with_precision(load.kilometers, precision: 2) %>/KM</td> 
       <td><%= number_to_currency(load.rate_to_owner_operator) %></td>
       <td>
         <% load.transactions.each do |transaction| %>
@@ -50,7 +50,7 @@
         <% credit_running_total = credit_running_total + transaction.credit %>
         <% end %>
       </td>
-      <td><%= load.weight %></td>
+      <td><%= load.pounds %>/lbs <%= number_with_precision(load.kilos, precision: 2)%>/kilos</td>
       <td><%= load.load_size %></td>
       <td><%= load.truck_make %> #<%= load.truck_number %></td>
       <td><%= load.trailer_make %> #<%= load.trailer_number %></td>

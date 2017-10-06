@@ -65,13 +65,13 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:                  'smtp.office365.com',
-    port:                     587,
+    port:                      587,
     authentication:           :login,  
-    user_name:                "schesnowitz@transportationiq.com",
-    password:                 "@Layla112207",
-    domain:                   'transportationiq.com',  
-    enable_starttls_auto:     true, 
-  }
+    user_name:                 ENV["MAIL_USERNAME"], 
+    password:                  ENV["MAIL_PASSWORD"], 
+    domain:                   'transportationiq.com',     
+    enable_starttls_auto:      true, 
+  } 
 
 
 

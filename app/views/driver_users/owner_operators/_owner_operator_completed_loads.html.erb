@@ -8,7 +8,7 @@
       <th>ID</th>
       <th>Booked On</th>
       <th>Description</th>
-      <th>Distance (Miles)</th>
+      <th>Distance</th>
       <th>Rate</th>
       <th>Debits</th>
       <th>Credits</th>
@@ -25,6 +25,7 @@
     <% expense_running_total = 0.00 %>
     <% company_gross_load_running_total = 0.00 %>
     <% total_miles = 0 %>
+    <% total_kilometers = 0 %>
     <% driver_gross_pay_running_total = 0.00 %>
     <% @completed_loads.each do |load| %>
     <tr>
@@ -38,8 +39,8 @@
         <%= link_to load do %>
         <%= load.title %> 
         <% end %>
-      </td>
-      <td><%= load.miles %> </td>
+      </td> 
+      <td><%= load.miles %>/MI <%= load.kilometers %>/KM </td>
       <td><%= number_to_currency(load.rate_to_owner_operator) %></td>
       <td>
         <% load.transactions.each do |transaction| %>
@@ -53,7 +54,7 @@
         <% credit_running_total = credit_running_total + transaction.credit %>
         <% end %>
       </td>
-      <td><%= load.weight %></td>
+      <td><%= load.pounds %>/lbs <%= number_with_precision(load.kilometers, precision: 2)%>/kilos</td>
       <td><%= load.load_size %></td>
       <td><%= load.truck_make %> #<%= load.truck_number %></td>
       <td><%= load.trailer_make %> #<%= load.trailer_number %></td>
@@ -61,6 +62,7 @@
     </tr>
     <% company_gross_load_running_total = company_gross_load_running_total + load.invoice_price %> 
     <% total_miles = total_miles + load.miles %>
+    <% total_kilometers = total_kilometers + load.kilometers %>
     <% driver_gross_pay_running_total = driver_gross_pay_running_total + load.rate_to_owner_operator %>
     <% end %>
   </tbody>
@@ -75,7 +77,7 @@
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
-      <th>Total Miles</th>
+      <th>Total Distance</th>
       <th>Amount Before Expenses</th>
       <th>Debits</th>
       <th>Credits</th>
@@ -87,7 +89,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= total_miles %></td>
+      <td><%= total_miles %>/MI <br> <%= number_with_precision(total_kilometers, precision: 2)%>/KM</td>
       <td><%= number_to_currency(driver_gross_pay_running_total) %></td>
       <td><%= number_to_currency(debit_running_total) %></td>
       <td><%= number_to_currency(credit_running_total) %></td>

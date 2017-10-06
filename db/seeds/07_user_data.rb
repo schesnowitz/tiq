@@ -41,7 +41,7 @@ kathy = CompanyUser.create(
 leadfoot = DriverUser.create(
   password: "password1",
   password_confirmation: "password1", 
-  first_name: "Joe The Driver",
+  first_name: "Joe",
   last_name: "Leadfoot",
   email: "leadfoot@example.com", 
   cellphone: "7169864010",  
@@ -57,43 +57,43 @@ leadfoot = DriverUser.create(
   )
   puts leadfoot.inspect
   
-stumpy = DriverUser.create(
-  password: "password1", 
-  password_confirmation: "password1", 
-  first_name: "Stumpy",
-  last_name: "McGillacuddy",
-  email: "stumpy@example.com", 
-  cellphone: "7169864010",  
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: Faker::Address.city,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  employment_status: "active",
-  company_driver: true,
-  driver_rate_id: 30
-  )
-  puts stumpy.inspect
+# stumpy = DriverUser.create(
+#   password: "password1", 
+#   password_confirmation: "password1", 
+#   first_name: "Stumpy",
+#   last_name: "McGillacuddy",
+#   email: "stumpy@example.com", 
+#   cellphone: "7169864010",  
+#   street: Faker::Address.street_name,
+#   telephone: Faker::PhoneNumber.phone_number,
+#   city: Faker::Address.city,
+#   zip: "123456",
+#   emergency_contact: Faker::Name.first_name,
+#   emergency_contact_number: Faker::PhoneNumber.phone_number,
+#   employment_status: "active",
+#   company_driver: true,
+#   driver_rate_id: 30
+#   )
+#   puts stumpy.inspect
   
-  slowmoe = DriverUser.create(
-  password: "password1",
-  password_confirmation: "password1", 
-  first_name: "Slow",
-  last_name: "Moe",
-  email: "slow@example.com", 
-  cellphone: "7169864010",  
-  street: Faker::Address.street_name,
-  telephone: Faker::PhoneNumber.phone_number,
-  city: Faker::Address.city,
-  zip: "123456",
-  emergency_contact: Faker::Name.first_name,
-  emergency_contact_number: Faker::PhoneNumber.phone_number,
-  employment_status: "active",
-  owner_operator: true
+  # slowmoe = DriverUser.create(
+  # password: "password1",
+  # password_confirmation: "password1", 
+  # first_name: "Slow",
+  # last_name: "Moe",
+  # email: "slow@example.com", 
+  # cellphone: "7169864010",  
+  # street: Faker::Address.street_name,
+  # telephone: Faker::PhoneNumber.phone_number,
+  # city: Faker::Address.city,
+  # zip: "123456",
+  # emergency_contact: Faker::Name.first_name,
+  # emergency_contact_number: Faker::PhoneNumber.phone_number,
+  # employment_status: "active",
+  # owner_operator: true
 
-  )   
-  puts slowmoe.inspect
+  # )   
+  # puts slowmoe.inspect
   
 joe = DriverUser.create(
   password: "password1",
