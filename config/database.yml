@@ -3,21 +3,22 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
+  database: iq_production
   host: <%= ENV['DATA_DB_HOST'] %>
   username: <%= ENV['DATA_DB_USER'] %>
   password: <%= ENV['DATA_DB_PASS'] %>
 
 development:
   <<: *default
-  database: iq_development
+  # database: iq_development
 
 test:
   <<: *default
-  database: iq_test
+  # database: iq_test
 
 production:
   <<: *default
-  database: iq_production
+  # database: iq_production
 
 staging:
   <<: *default
