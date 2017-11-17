@@ -38,6 +38,10 @@ gem 'sinatra'
 gem 'sidekiq-cron'
 gem 'wicked_pdf'  
 gem 'wkhtmltopdf-binary' 
+
+
+
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

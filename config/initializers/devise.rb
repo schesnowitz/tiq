@@ -14,7 +14,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   # config.mailer_sender = 'Message from Fr8Track <margo@margoscargo.com>'   
-  config.mailer_sender = 'TransportIQ <transportiqapp@transportationiq.com>'       
+  config.mailer_sender = 'TransportIQ <fr8track@gmail.com>'       
   
   # Configure the class responsible to send e-mails. 
   # config.mailer = 'Devise::Mailer'
