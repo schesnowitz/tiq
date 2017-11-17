@@ -47,8 +47,6 @@
       <th>Company Driver Pay</th>
       <th><%= sort_link @search_loads, :miles, "Distance" %></th>
       <th>Booking Fee</th>
-      <th>Truck</th>
-      <th>Trailer</th>
       <th><%= sort_link @search_loads, :status_name, "Status" %></th>
     </tr>
   </thead>
@@ -125,8 +123,6 @@
       <td>
         <%= number_to_currency(load.booking_fee) %>
       </td>
-      <td><%= load.truck_make %> #<%= load.truck_number %></td>
-      <td><%= load.trailer_make %> #<%= load.trailer_number %></td>
       <td><%= load.status_name %></td>
     </tr>
     <% invoice_running_total = invoice_running_total + load.invoice_price %> 
