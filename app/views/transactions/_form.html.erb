@@ -2,21 +2,18 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="form-group input-group">
-      <span class="input-group-addon"><i class="fa fa-money"></i></span>
-
-        <%= f.input :business_name, label: false, placeholder: "Biz Name (if no vendor)" %>
-      <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %>
-      <%= f.input :debit, label: false, placeholder: "Debit" %>
-            <%= f.input :credit, label: false, placeholder: "Credit" %>
+      <%= f.input :business_name, label: "Business Name" %>
+      <%= f.input :expense_type, collection: Load::ExpenseType, label: "Type" %>
+      <%= f.input :debit, label: "Debit" %>
+      <%= f.input :credit, label: "Credit" %>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="form-group input-group">
-      <span class="input-group-addon"><i class="fa fa-at"></i></span>
-      <%= f.input :street, label: false, placeholder: "Street" %>
-      <%= f.input :city, label: false, placeholder: "City" %>
-      <%= f.input :state, label: false, placeholder: "State" %>
-      <%= f.input :zip, label: false, placeholder: "zip" %>
+      <%= f.input :street, label: "Street" %>
+      <%= f.input :city, label: "City" %>
+      <%= f.input :state, label: "State" %>
+      <%= f.input :zip, label: "zip" %>
     </div>
 <br />   
 <br /> 
@@ -26,3 +23,8 @@
   <%= f.button :submit, class: "btn btn-info btn-sm round pull-left" %>
 </div>
 <% end %>
+
+
+
+
+
