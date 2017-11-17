@@ -45,7 +45,7 @@
       <th><%= sort_link @search_loads, :invoice_price, "Invoice Price" %></th>
       <th>Driver Rate</th>
       <th>Company Driver Pay</th>
-      <th><%= sort_link @search_loads, :miles, "Distance (Miles)" %></th>
+      <th><%= sort_link @search_loads, :miles, "Distance" %></th>
       <th>Booking Fee</th>
       <th>Truck</th>
       <th>Trailer</th>
@@ -103,8 +103,6 @@
         <% end %>
       </td>
       <td><%= load.commodity %></td>
-      <td><%= load.needs_temp_control_model %></td>
-            <td><%= load.has_hazmat %></td> 
       <td><%= load.pounds %> LBS <br><%= number_with_precision(load.kilos, precision: 2)%> KGS</td>
       <td><%= load.load_size %></td>
       <td>
@@ -120,7 +118,10 @@
         <% if load.driver_user.company_driver? %>
           <%= number_to_currency(load.driver_cents_pm * load.miles) %></td>
         <% end %>  
-      <td><%= load.miles %> </td>
+      <td>
+      MI: <%= load.miles %><br>
+      KM: <%= number_with_precision(load.kilometers) %>
+      </td>
       <td>
         <%= number_to_currency(load.booking_fee) %>
       </td>
