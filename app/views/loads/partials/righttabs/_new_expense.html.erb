@@ -4,10 +4,9 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="form-group input-group">
-      <span class="input-group-addon"><i class="fa fa-money"></i></span>
 
-      <%= f.input :expense_type, collection: Load::ExpenseType, label: false, placeholder: "Type" %> 
-      <%= f.input :business_name, label: false, placeholder: "Business Name" %> 
+      <%= f.input :expense_type, collection: Load::ExpenseType, label: "Expense Type" %> 
+      <%= f.input :business_name, label: "Business Name" %> 
       <%= f.input :debit, label: "Debit Amount" %>
       <%= f.input :credit, label: "Credit Amount" %>
       
@@ -16,12 +15,11 @@
   </div>
   <div class="col-sm-6">
     <div class="form-group input-group">
-      <span class="input-group-addon"><i class="fa fa-at"></i></span>
-      <%= f.input :street, label: false, placeholder: "Street" %>
-      <%= f.input :city, label: false, placeholder: "City" %>
+      <%= f.input :street, label: "Street" %>
+      <%= f.input :city, label: "City" %>
       <%= f.input :state, collection: ApplicationRecord::States, 
-        label: false, placeholder: "State" %>
-      <%= f.input :zip, label: false, placeholder: "zip" %>
+        label: "Provence/State" %>
+      <%= f.input :zip, label: "Postal Code" %>
     </div>
   </div>
 </div>
