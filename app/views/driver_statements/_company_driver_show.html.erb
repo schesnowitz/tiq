@@ -23,6 +23,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Broker Load ID</th> 
       <th>Booked On</th>
       <th>Description</th>
       <th>Rate</th>
@@ -57,6 +58,7 @@
         <%= load.id %>
         <% end %>
       </td>
+      <td><%= load.broker_shipper_load_id %></td>
       <td><%= (load.created_at.strftime("%A %B %-d, %Y")) %></td>
       <td>
         <%= link_to load do %>
