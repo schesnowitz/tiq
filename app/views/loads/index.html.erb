@@ -226,7 +226,7 @@
 <% end %>
 <% load.transactions.each do |transaction| if transaction.expense_type == "Lumper" %>
 <% number_to_currency(transaction.debit) %> 
-<% lumper_running_total = lumperlumper_running_total + transaction.debit %>
+<% lumper_running_total = lumper_running_total + transaction.debit %>
 <% end %>
 <% end %>  
 <% load.transactions.each do |transaction| if transaction.expense_type == "Lumper" %>

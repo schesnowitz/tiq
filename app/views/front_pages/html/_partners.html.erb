@@ -1,235 +1,31 @@
-<section id="partners" class="">  
-<style>
-  #scroller{
-  width: 10000%;
-}
-#scroller.ready > *{
-  display: inline-block;
-  float:left;
-  overflow: hidden;
-
-  webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-
-
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-
-
-  -webkit-animation-duration: 10s;
-  animation-duration: 10s;
-
-
-  -webkit-animation-name: marginator;
-  animation-name: marginator;
-
-
-
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
-#scroller:hover > *{
-
-
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
-}
-
-@-webkit-keyframes marginator {
-  0% {
-    -webkit-transform: translate(0,0);
-    -webkit-transform: translate3d(0,0,0);
-  }
-  100% {
-    -webkit-transform: translate(-100%,0);
-    -webkit-transform: translate3d(-100%,0,0);
-  }
-}
-
-@keyframes marginator {
-  0% {
-
-    -webkit-transform: translate(0,0);
-    transform: translate(0,0);
-
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-  }
-  100% {
-
-
-    -webkit-transform: translate(-100%,0);
-    transform: translate(-100%,0);
-
-
-    -webkit-transform: translate3d(-100%,0,0);
-    transform: translate3d(-100%,0,0);
-  }
-}
-#scroller-wrapper{
-  overflow: hidden;
-}
-
-</style>
-
-
+<section id="partners" class="">
 <footer class="footer section-small padding: none; margin: none;"></footer>
-
-   <!--style="display: none"--><div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <header class="text-center">
-          <h2 class="section-title">
-            <% @fpt50.string_input %>
-            <span class="text-theme">
-            Just some of the great companies our team has worked with.
-            </span>
-          </h2>
-          <p class="section-subtitle">
-            <% @fpt51.string_input %> We hope to see you here soon!
-          </p>
-        </header>
-      </div>
-        </div>
-<div id="scroller-wrapper">
-  <div id="scroller">
-    <div>
-
-          
-    <%= link_to ("http://"+@fpt116.string_input), target: :_blank do %>    
-      <% if !@fpt10.image_input.present? || @fpt10.show_default_image == true %>
-      <% else %>
-      <%= image_tag @fpt10.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %>
-      
-      <%= link_to ("http://"+@fpt117.string_input), target: :_blank do %> 
-      <% if !@fpt11.image_input.present? || @fpt11.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt11.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt118.string_input), target: :_blank do %> 
-      <% if !@fpt12.image_input.present? || @fpt12.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt12.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt119.string_input), target: :_blank do %> 
-      <% if !@fpt13.image_input.present? || @fpt13.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt13.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt120.string_input), target: :_blank do %> 
-      <% if !@fpt14.image_input.present? || @fpt14.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt14.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt121.string_input), target: :_blank do %> 
-      <% if !@fpt15.image_input.present? || @fpt15.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt15.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt122.string_input), target: :_blank do %> 
-      <% if !@fpt16.image_input.present? || @fpt16.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt16.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt123.string_input), target: :_blank do %> 
-      <% if !@fpt17.image_input.present? || @fpt17.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt17.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt124.string_input), target: :_blank do %> 
-      <% if !@fpt18.image_input.present? || @fpt18.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt18.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt125.string_input), target: :_blank do %> 
-      <% if !@fpt19.image_input.present? || @fpt19.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt19.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt126.string_input), target: :_blank do %> 
-      <% if !@fpt20.image_input.present? || @fpt20.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt20.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt127.string_input), target: :_blank do %> 
-      <% if !@fpt21.image_input.present? || @fpt21.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt21.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt128.string_input), target: :_blank do %> 
-      <% if !@fpt22.image_input.present? || @fpt22.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt22.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt129.string_input), target: :_blank do %> 
-      <% if !@fpt23.image_input.present? || @fpt23.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt23.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-      
-      <%= link_to ("http://"+@fpt130.string_input), target: :_blank do %> 
-      <% if !@fpt24.image_input.present? || @fpt24.show_default_image == true %>
-      <%= image_tag "front_pages/351x150.png" %>
-      <% else %>
-      <%= image_tag @fpt24.image_input_url(:slider), class: "margin-right-20" %>
-      <% end %> 
-      <% end %> 
-          
-        
-    </div>
+<!--style="display: none"-->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <header class="text-center">
+      <h2 class="section-title">
+        <% @fpt50.string_input %>
+        <span class="text-theme">
+        Just some of the great companies our team has worked with.
+        </span>
+      </h2>
+      <p class="section-subtitle">
+        <% @fpt51.string_input %> We hope to see you here soon!
+      </p>
+    </header>
   </div>
 </div>
-
-<script>
-$(document).ready(function(){
-  $(function () {
-  var $first=$('#scroller>:first-child');
-  $('#scroller').width($first.outerWidth(true));
-  $first.clone(true).appendTo('#scroller');
-  $('#scroller').addClass('ready');
- })
-});
-</script>
-
+<div class="row">
+<div class="col-sm-6 text-center">
+  <%= link_to 'https://www.chrobinson.com/', target: :_blank do %> 
+  <%= image_tag 'front_pages/partners/chrobinson.jpg' %>
+  <% end %>
+</div>
+<div class="col-sm-6 text-center">
+  <%= link_to 'https://www.pamtransport.com/', target: :_blank do %> 
+  <div class="col-sm-6 col-sm-offset-2">
+    <%= image_tag 'front_pages/partners/pam.jpg' %>
+    <% end %>
+  </div>
+</div>
