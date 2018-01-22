@@ -24,10 +24,10 @@ class Load < ApplicationRecord
 
   validates_presence_of :load_size, :pick_up_date, :national_average_diesel_price, 
   :driver_user_id, :company_profile, :rate_to_owner_operator, :status_name, 
-  :invoice_price, :origin_street, :origin_city, :origin_state, :truck_make, :truck_number, :kilometers, :commodity, 
+  :invoice_price, :origin_street, :origin_city, :origin_state, :truck_make, :truck_number, :commodity, 
   :trailer_make, :trailer_number, :origin_zip, :broker_rep_name
   
-  validates :destination_street, :destination_city, :miles, :destination_state, :delivery_date, :destination_zip,
+  validates :destination_street, :destination_city, :miles, :destination_state, :delivery_date, :destination_zip, :kilometers,
   presence: true, unless: :has_multiple_pd?
   validates :percent_coverted_to_dollars, presence: true, unless: :is_company_driver
   validates :invoice_price, numericality: { other_than: 0.0 }  
