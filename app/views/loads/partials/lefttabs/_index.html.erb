@@ -10,12 +10,12 @@
         <% if @load.miles == 0 %>
         <h3 class="text-red">
           <%= @load.title %><br>  
-          (<%= @load.miles %> Miles)
+          (<%= @load.miles if !@load.miles.nil? %> Miles)
         </h3>
         <% else %>
         <small>
         <%= @load.title %><br>  
-        <%= @load.miles.floor %> Miles
+        <%= @load.miles.floor if !@load.miles.nil? %> Miles
         </small>
         <% end %>
       </h3>
@@ -30,7 +30,7 @@
         <li><a href="#documents" data-toggle="tab">Documents</a></li>
 
       <li class="pull-right">
-      <% if @load.miles == 0 %> 
+      <% if @load.miles == 0 || @load.miles.nil? %> 
       <%= link_to 'Calculate Miles!', edit_load_path(@load), class: "btn btn-danger btn-xl round pull-right" %>
       <% else %>
       <%= link_to 'Edit Load', edit_load_path(@load), class: "btn btn-info btn-sm round pull-right" %>

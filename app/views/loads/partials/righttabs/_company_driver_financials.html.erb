@@ -76,10 +76,10 @@
         <%= number_to_currency(@load.invoice_price) %>
       </td>
       <td>
-        <%= (@load.miles) %>
+        <%= (@load.miles) if !@load.miles.nil? %>
       </td>
      <td>
-        <%= number_to_currency(@load.invoice_price / @load.miles) %>
+        <%= number_to_currency(@load.invoice_price / @load.miles) if !@load.miles.nil? %>
       </td>
       <td>
         <%= number_to_currency(@load.booking_fee) %>
@@ -88,13 +88,13 @@
         <%= number_to_currency(@load.driver_cents_pm)  %>/mile
       </td>
       <td>
-        <%= number_to_currency(@load.driver_cents_pm * @load.miles)  %>
+        <%= number_to_currency(@load.driver_cents_pm * @load.miles) if !@load.miles.nil? %>
       </td>
     </tr>
   </tbody>
 </table>
-<% @miles_divided_truck_mpg = @load.miles / @load.truck_mpg %>
-<% @projected_diesel_cost = @load.national_average_diesel_price * @miles_divided_truck_mpg %>
+<% @miles_divided_truck_mpg = @load.miles / @load.truck_mpg if !@load.miles.nil? %>
+<% @projected_diesel_cost = @load.national_average_diesel_price * @miles_divided_truck_mpg if !@load.miles.nil? %>
 <table class="table table-bordered table-striped table-hover table-condensed table-responsive">
 	<thead>
 		<tr>
@@ -112,11 +112,11 @@
 
 
 
-<% driver_pay = (@load.driver_cents_pm * @load.miles) %>
-<% rate_after_driver_pay = (@load.invoice_price - driver_pay) %>
+<% driver_pay = (@load.driver_cents_pm * @load.miles) if !@load.miles.nil? %>
+<% rate_after_driver_pay = (@load.invoice_price - driver_pay) if !@load.miles.nil? %>
 <% load_expense = (total_debits - total_credits) %>
-<% total_otr_expense = driver_pay + load_expense %>
-<% cash_after_expenses = (@load.invoice_price - total_otr_expense) %>
+<% total_otr_expense = driver_pay + load_expense if !@load.miles.nil? %>
+<% cash_after_expenses = (@load.invoice_price - total_otr_expense) if !@load.miles.nil? %>
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
@@ -153,7 +153,7 @@
         <%= number_to_currency(cash_after_expenses) %>
       </td>
       <td>
-         <%= number_to_currency(cash_after_expenses / @load.miles) %>
+         <%= number_to_currency(cash_after_expenses / @load.miles) if !@load.miles.nil? %>
       </td>
     </tr>
   </tbody>
@@ -179,18 +179,18 @@ Driver Section
         <%= number_to_currency(@load.driver_cents_pm)  %>/mile
       </td>
       <td>
-        <%= @load.miles %>
+        <%= @load.miles if !@load.miles.nil? %>
       </td>
       <td>
-        <%= number_to_currency(@load.driver_cents_pm * @load.miles) %>
+        <%= number_to_currency(@load.driver_cents_pm * @load.miles) if !@load.miles.nil? %>
       </td>
     </tr>
   </tbody>
 </table>
-	<% cd_rate = @load.driver_cents_pm * @load.miles  %>
+	<% cd_rate = @load.driver_cents_pm * @load.miles if !@load.miles.nil? %>
 	<% cd_debit_credit_total = cd_total_debits - cd_total_credits %>
 	<% debit_credit_total = total_debits - total_credits %>
-	<% cd_rate_after_expenses = cd_rate - cd_debit_credit_total %> 
+	<% cd_rate_after_expenses = cd_rate - cd_debit_credit_total if !@load.miles.nil?  %> 
 <table class="table table-bordered table-striped table-condensed table-responsive">
   <thead>
     <tr>
@@ -207,7 +207,7 @@ Driver Section
       <td>+<%= number_to_currency(cd_total_credits) %></td>
       <td>-<%= number_to_currency(cd_debit_credit_total) %></td>
       <td><%= number_to_currency(cd_rate_after_expenses)  %></td>
-      <td><%= number_to_currency(cd_rate_after_expenses / @load.miles) %></td>
+      <td><%= number_to_currency(cd_rate_after_expenses / @load.miles) if !@load.miles.nil? %></td>
     </tr>
   </tbody>
 </table>

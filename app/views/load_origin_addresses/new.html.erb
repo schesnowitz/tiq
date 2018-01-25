@@ -84,8 +84,7 @@
       <%= f.select :address_category_id, AddressCategory.all.map{ |form| [form.name, form.id]}, include_blank: 'Select Type' %> 
       <br><br>
       <label>Scheduled For</label><br /> 
-      <%= f.text_field :pick_up_date, class: "bring_front ",
-        placeholder: " Select Date" %>
+      <%= f.input :pick_up_date %>
     </div>
   </div>
   <div class="col-sm-3">
@@ -163,7 +162,7 @@
     </div>
   </strong>
   <br />
-  <%= f.button  :submit, "Add Stop",  class: 'btn btn-success btn-sm round theSubmitButton', data: {disable_with: "One Moment..."} %>   
+  <%= f.button  :submit, "Add Stop",  class: 'btn btn-success btn-sm round', data: {disable_with: "One Moment..."} %>   
 </div>
 <% end %>
 <%= render "calculate_distance" %>

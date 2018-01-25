@@ -79,8 +79,8 @@
     </tr>
   </tbody>
 </table>
-<% @miles_divided_truck_mpg = @load.miles / @load.truck_mpg %>
-<% @projected_diesel_cost = @load.national_average_diesel_price * @miles_divided_truck_mpg %>
+<% @miles_divided_truck_mpg = @load.miles / @load.truck_mpg if !@load.miles.nil?  %>
+<% @projected_diesel_cost = @load.national_average_diesel_price * @miles_divided_truck_mpg if !@load.miles.nil? %>
 <table class="table table-bordered table-striped table-hover table-condensed table-responsive">
   <thead>
     <tr>
@@ -117,13 +117,13 @@
   <tbody>
     <tr>
       <td>
-        <%= (@load.miles) %>
+        <%= (@load.miles) if !@load.miles.nil? %>
       </td>
       <td>
-        <%= number_to_currency(@load.invoice_price / @load.miles) %>
+        <%= number_to_currency(@load.invoice_price / @load.miles) if !@load.miles.nil?  %>
       </td>
       <td>
-        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.miles)  %>
+        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.miles) if !@load.miles.nil?  %>
       </td>
     </tr>
   </tbody>
@@ -149,10 +149,10 @@
         <%= number_with_precision(@load.kilometers, percision: 2) %>
       </td>
       <td>
-        <%= number_to_currency(@load.invoice_price / @load.kilometers) %>
+        <%= number_to_currency(@load.invoice_price / @load.kilometers) if !@load.kilometers.nil? %>
       </td>
       <td>
-        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.kilometers)  %>
+        <%= number_to_currency(@load.percent_coverted_to_dollars / @load.kilometers) if !@load.kilometers.nil? %>
       </td>
     </tr>
   </tbody>
@@ -160,8 +160,8 @@
 <% owner_operator_debit_credit_total = owner_operator_total_debits - owner_operator_total_credits %>
 <% debit_credit_total = total_debits - total_credits %>
 <% rate_after_expenses = @load.rate_to_owner_operator - owner_operator_debit_credit_total %>
-<% rate_per_mile_after_expenses = rate_after_expenses / @load.miles %>
-<% rate_per_km_after_expenses = rate_after_expenses / @load.kilometers %>
+<% rate_per_mile_after_expenses = rate_after_expenses / @load.miles if !@load.miles.nil? %>
+<% rate_per_km_after_expenses = rate_after_expenses / @load.kilometers if !@load.kilometers.nil? %>
 <strong>Driver Section</strong>
 <!--miles-->
 <table class="table table-bordered table-striped table-condensed table-responsive">
@@ -188,7 +188,7 @@
         <%= @load.miles %>
       </td>
       <td>
-        <%= number_to_currency(@load.rate_to_owner_operator / @load.miles) %>
+        <%= number_to_currency(@load.rate_to_owner_operator / @load.miles) if !@load.miles.nil?  %>
       </td>
       <td><%= number_to_currency(rate_per_mile_after_expenses) %></td>
     </tr>
@@ -219,7 +219,7 @@
         <%= number_with_precision(@load.kilometers, percision: 2) %>
       </td>
       <td>
-        <%= number_to_currency(@load.rate_to_owner_operator / @load.kilometers) %>
+        <%= number_to_currency(@load.rate_to_owner_operator / @load.kilometers) if !@load.kilometers.nil? %>
       </td>
       <td><%= number_to_currency(rate_per_km_after_expenses) %></td>
     </tr>

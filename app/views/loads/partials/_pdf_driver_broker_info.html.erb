@@ -47,9 +47,9 @@
     <div class="col-xs-6">
       <p>
         Rate: <%= number_to_currency(@load.rate_to_owner_operator) if @load.driver_user.owner_operator? %>
-        <%= number_to_currency(@load.driver_cents_pm * @load.miles) if @load.driver_user.company_driver? %>
+        <%= number_to_currency(@load.driver_cents_pm * @load.miles) if @load.driver_user.company_driver? && !@load.miles.nil? %>
       </p>
-      <p>Miles: <%= @load.miles.floor %></p>
+      <p>Miles: <%= @load.miles.floor if !@load.miles.nil? %></p>
       <p>
         Has multiple stops: 
         <% if @load.has_multiple_pd? %>

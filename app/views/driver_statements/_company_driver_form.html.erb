@@ -67,8 +67,7 @@
           </tr>
           <tr class="well">
             <td>
-              <%= f.text_field :due_date, class: "bring_front",
-                placeholder: "Payment Due On" %>
+              <%= f.input :due_date %>
             </td>
           </tr>
         </tbody>
@@ -117,6 +116,7 @@
     <% miles_to_dollars = 0.00  %>
     <% @loads.each do |load| %>
     <tr>
+
       <td>
         <%= link_to load do %>
         <%= load.id %>
@@ -135,8 +135,8 @@
         <% end %>
       <td><%= number_to_currency(load.driver_user.driver_rpm) %>/mile</td>
       <td><%= load.miles %> </td>
-      <% load_miles_to_dollars = (load.miles * load.driver_user.driver_rpm) %>
-            <% load_miles_to_dollars = (load.miles * load.driver_user.driver_rpm) %>
+      <% load_miles_to_dollars = ( load.driver_user.driver_rate.amount.to_f) %>
+   
       <td><%= number_to_currency(load_miles_to_dollars) %> </td>
       <td>
         <% load.transactions.each do |transaction| %>
@@ -170,5 +170,3 @@
 <% rate_after_expenses = driver_load_running_total - debit_total%>
 <br />
 <br /> 
-
-

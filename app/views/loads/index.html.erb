@@ -114,11 +114,11 @@
       <% end %>
       <td>
         <% if load.driver_user.company_driver? %>
-          <%= number_to_currency(load.driver_cents_pm * load.miles) %></td>
+          <%= number_to_currency(load.driver_cents_pm * load.miles) if !load.miles.nil? %></td>
         <% end %>  
       <td>
-      MI: <%= load.miles %><br>
-      KM: <%= number_with_precision(load.kilometers) %>
+      MI: <%= load.miles if !load.miles.nil? %><br>
+      KM: <%= number_with_precision(load.kilometers) if !load.kilometers.nil? %>
       </td>
       <td>
         <%= number_to_currency(load.booking_fee) %>
@@ -128,13 +128,13 @@
     <% invoice_running_total = invoice_running_total + load.invoice_price %> 
     <% booking_fee_running_total = booking_fee_running_total + load.booking_fee %>
     <% if load.driver_user.company_driver? %>
-    <% company_driver_pay = (load.driver_cents_pm * load.miles) %>
+    <% company_driver_pay = (load.driver_cents_pm * load.miles) if !load.miles.nil? %>
     <% end %>
     <% if load.driver_user.company_driver? %>
-    <% company_driver_pay_running_total = company_driver_pay_running_total + company_driver_pay  %>
+    <% company_driver_pay_running_total = company_driver_pay_running_total + company_driver_pay if !load.miles.nil? %>
     <% end %>
     <% owner_operator_pay_running_total = owner_operator_pay_running_total + load.rate_to_owner_operator %>
-    <% total_miles = total_miles + load.miles %>
+    <% total_miles = total_miles + load.miles if !load.miles.nil? %>
     <% end %>
   </tbody>
 </table>
